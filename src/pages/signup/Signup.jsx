@@ -13,6 +13,7 @@ function SignupPage() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [profilePicture, setProfilePicture] = useState(null);
+  // gon added this 1/9 12:40
   
   const navigate = useNavigate(); // Initialize the useNavigate hook
 
