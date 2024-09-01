@@ -136,10 +136,51 @@
   box-shadow: 0 0 20px #007bff; /* Add subtle focus effect */
 }
 
+.signup-image-container{
+  margin-bottom: 20px;
+}
+.signup-image-label{
+  display: block;
+  font-size: 20px;
+  color: #555;
+}
+.signup-image-upload{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.signup-image-input{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 50%;
+  max-width: 50%;
+  padding: 8px;
+  font-size: 20px;
+  color: #333;
+  border: 2px solid #cccbcb;
+  background-color: white;
+  border-radius: 10px;
+  flex-grow: 1;
+}
 .signup-image-preview{
   margin-top: 10px;
   text-align: center;
 }
+.signup-image-preview-img{
+  max-width: 200px; 
+  max-height: 200px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover; /* Ensures the image fits well in the circle */
+  border: 2px solid #cccbcb; /* Optional border styling */
+}
+
+
+
+
 
 .signup-checkbox-label{
   height: 10px;

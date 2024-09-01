@@ -220,25 +220,27 @@ function SignupPage() {
             />
           </div>
 
-          <div className="signup-input-group">
-            <label className="signup-input-label">Profile Picture:</label>
-            <input 
-              className="signup-input-box"
-              type="file"
-              id="image-upload"
-              accept="image/*"
-              onChange={handleImageUpload}
-              // name="profilePicture"
-              // accept="image/*"
-              // onChange={handleFileChange} 
-              // value={password}
-              // onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+
+          {/* Image Upload */}
+          <div className="signup-image-container">
+            <label htmlFor="image-upload" className="signup-input-label"
+              >Profile Picture:
+            </label>
+              <div className="signup-image-upload">
+                <input
+                  className="signup-image-input"
+                  type="file"
+                  id="image-upload"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                />
+              </div>
+            </div>
           {/* Image Preview */}
           {imageURL && (
             <div className="signup-image-preview">
-              <img src={imageURL} alt="Preview" />
+              <img src={imageURL} alt="Preview"
+              className="signup-image-preview-img" />
             </div>
           )}
 
