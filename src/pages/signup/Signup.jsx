@@ -12,8 +12,14 @@ function SignupPage() {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
+  const [profilePicture, setProfilePicture] = useState(null);
+  
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
-  const navigate = useNavigate(); // Initialize the useNavigate hook  
+  const handleFileChange = (e) => {
+    setProfilePicture(e.target.files[0]);
+    console.log("profile picture")
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,15 +30,30 @@ function SignupPage() {
       return; // Exit the function early if permission is not granted
     }
 
-    const signupData = {
-      firstName,
-      lastName,
-      country,
-      email,
-      phoneNumber,
-      password,
-      locationAccessPermission
-    };
+    const formData = new FormData(); // Use FormData for file upload
+    formData.append('firstName', firstName);
+    formData.append('lastName', lastName);
+    formData.append('country', country);
+    formData.append('email', email);
+    formData.append('phoneNumber', phoneNumber);
+    formData.append('password', password);
+    formData.append('locationAccessPermission', locationAccessPermission);
+    
+    if (profilePicture) {
+      formData.append('profilePicture', profilePicture); // Append profile picture
+    } else {
+      formData.append('profilePicture', " ");
+    }
+
+    // const signupData = {
+    //   firstName,
+    //   lastName,
+    //   country,
+    //   email,
+    //   phoneNumber,
+    //   password,
+    //   locationAccessPermission
+    // };
 
 
     try {
@@ -42,16 +63,17 @@ function SignupPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(signupData),
+        body: formData,
+        // body: JSON.stringify(signupData),
       });
 
       if (response.ok) {
+        navigate('/');
         // Assuming the server returns a JSON object upon successful signup
         //const result = await response.json();
 
         // Successful signup, navigate to home page or wherever needed
-        //console.log("SIGN UP SUCCESSFULL!");
-        navigate('/');
+        console.log("SIGN UP SUCCESSFULL!");
       }
       else
       {
@@ -148,8 +170,20 @@ function SignupPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            
-          </div> {/*signup-form-section */}
+          </div>
+
+          {/* <div className="signup-input-group">
+            <label className="signup-input-label">Profile Picture:</label>
+            <input 
+              type="file"
+              name="profilePicture"
+              className="signup-input-box"
+              accept="image/*"
+              onChange={handleFileChange} 
+              // value={password}
+              // onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>  */}
 
           <label className="signup-checkbox-label">
             <input 
@@ -161,7 +195,7 @@ function SignupPage() {
             />
             <p className="signup-location-permission">Location Permission</p>
           </label>
-        </div>
+        </div> {/*signup-form-section */}
 
         <button type="submit" className="signup-signup-button">Sign Up</button>
       </form> {/* sign up container */}
