@@ -14,7 +14,7 @@ function ProfilePage() {
   const [error, setError] = useState(null);
 
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve logged-in user's data
-  //console.log("PROFILE: user id=" + userData.userId)
+  console.log("PROFILE: user id=" + userData.userId)
 
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function ProfilePage() {
         if (response.ok)
         {
           const data = await response.json();
-          //console.log('Fetched profile data:', data);
+          console.log('Fetched profile data:', data);
           setProfileData(data); 
         }
         else

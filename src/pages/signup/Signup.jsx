@@ -12,14 +12,53 @@ function SignupPage() {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
-  const [profilePicture, setProfilePicture] = useState(null);
+  // const [profilePicture, setProfilePicture] = useState(null);
+  const [imageURL, setImageURL] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
   // gon added this 1/9 12:40
   
   const navigate = useNavigate(); // Initialize the useNavigate hook
 
-  const handleFileChange = (e) => {
-    setProfilePicture(e.target.files[0]);
-    console.log("profile picture")
+  // const handleFileChange = (e) => {
+  //   setProfilePicture(e.target.files[0]);
+  //   console.log("profile picture")
+  // };
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageURL(reader.result); // Display preview
+      };
+      setSelectedImage(file); // Store the file
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const uploadImage = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await fetch('http://localhost:8080/report/upload-image', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        console.log('profile picture uploaded')
+        return data.imageUrl; // URL returned from the server
+      } else {
+        console.log('profile picture failed')
+        throw new Error(data.message || 'Image upload failed');
+      }
+    } catch (error) {
+      console.log('profile picture ERROR')
+      console.error('Error uploading image:', error);
+      alert('An error occurred while uploading the image.');
+      return null;
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -31,31 +70,40 @@ function SignupPage() {
       return; // Exit the function early if permission is not granted
     }
 
-    const formData = new FormData(); // Use FormData for file upload
-    formData.append('firstName', firstName);
-    formData.append('lastName', lastName);
-    formData.append('country', country);
-    formData.append('email', email);
-    formData.append('phoneNumber', phoneNumber);
-    formData.append('password', password);
-    formData.append('locationAccessPermission', locationAccessPermission);
+    // const formData = new FormData(); // Use FormData for file upload
+    // formData.append('firstName', firstName);
+    // formData.append('lastName', lastName);
+    // formData.append('country', country);
+    // formData.append('email', email);
+    // formData.append('phoneNumber', phoneNumber);
+    // formData.append('password', password);
+    // formData.append('locationAccessPermission', locationAccessPermission);
     
-    if (profilePicture) {
-      formData.append('profilePicture', profilePicture); // Append profile picture
-    } else {
-      formData.append('profilePicture', " ");
+    // if (profilePicture) {
+    //   formData.append('profilePicture', profilePicture); // Append profile picture
+    //   console.log("profile pictureeeeee")
+    // } else {
+    //   formData.append('profilePicture', " ");
+    //   console.log("NO profile pictureeeeee")
+    // }
+    let imageUrl = '';
+    if (selectedImage) {
+      console.log("imageURL: ")
+      imageUrl = await uploadImage(selectedImage);
+      if (!imageUrl) return; // Abort if image upload fails
     }
 
-    // const signupData = {
-    //   firstName,
-    //   lastName,
-    //   country,
-    //   email,
-    //   phoneNumber,
-    //   password,
-    //   locationAccessPermission
-    // };
-
+    const signupData = {
+      firstName,
+      lastName,
+      country,
+      email,
+      password,
+      imageURL: imageUrl,
+      phoneNumber,
+      locationAccessPermission
+    };
+    console.log("Sending signupData:", signupData);
 
     try {
       const response = await fetch('http://localhost:8080/register', {
@@ -64,17 +112,16 @@ function SignupPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: formData,
-        // body: JSON.stringify(signupData),
+        // body: formData,
+        body: JSON.stringify(signupData),
       });
 
       if (response.ok) {
+        console.log("SIGN UP SUCCESSFULL!");
         navigate('/');
         // Assuming the server returns a JSON object upon successful signup
         //const result = await response.json();
-
         // Successful signup, navigate to home page or wherever needed
-        console.log("SIGN UP SUCCESSFULL!");
       }
       else
       {
@@ -173,18 +220,27 @@ function SignupPage() {
             />
           </div>
 
-          {/* <div className="signup-input-group">
+          <div className="signup-input-group">
             <label className="signup-input-label">Profile Picture:</label>
             <input 
-              type="file"
-              name="profilePicture"
               className="signup-input-box"
+              type="file"
+              id="image-upload"
               accept="image/*"
-              onChange={handleFileChange} 
+              onChange={handleImageUpload}
+              // name="profilePicture"
+              // accept="image/*"
+              // onChange={handleFileChange} 
               // value={password}
               // onChange={(e) => setPassword(e.target.value)}
             />
-          </div>  */}
+          </div>
+          {/* Image Preview */}
+          {imageURL && (
+            <div className="signup-image-preview">
+              <img src={imageURL} alt="Preview" />
+            </div>
+          )}
 
           <label className="signup-checkbox-label">
             <input 
