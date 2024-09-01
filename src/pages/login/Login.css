@@ -1,0 +1,155 @@
+.login-container{ /* קוביה אמצעית */
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: Tahoma;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  height: 60%;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 0px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.login-logo{
+  width: 150px;
+  height: 150px;
+  /*margin-top: 1px; 
+  margin-bottom: 1px;*/
+  margin-bottom: 20px;
+  transition: box-shadow 0.4s ease, background-color 0.4s ease;
+}
+.login-logo:hover{
+  /* background-color: #1e1b59; */
+  box-shadow: 0 0 30px 15px #2c2c61;
+  /* גורם ללוגו להיות זוהר מאחורה כשעוברים מעליו */
+}
+
+.login-title{ /* הכותרת ניוז גארד */
+  color: white;
+  font-weight: bold;
+  font-size: 60px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.login-form{
+  /*display: flex;עושה את הכפתור לוגין ממש ארוך */
+  flex-direction: column; /* שיהיה בשורות */
+  width: 100%; /* זה מה שעזר לשים במרכז !!!!!!!!!!!!! */
+  max-width: 400px;
+  /*padding: 20px;  המרחק מהצדדים */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.login-form-section{ 
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  height: max-content; 
+}
+
+.login-input-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.login-input-label{
+  color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
+  width: 100px; /* Adjust the width to align inputs */
+  text-align: right; /* Right align the labels */
+  margin-right: 10px;
+  margin-bottom: 0px;
+  padding: 10px;
+  min-width: 100px;
+}
+
+.login-input-box{ /* הקוביה שכותבים בה את האימייל וסיסמה */
+  /* margin: 10px 0; */
+  margin: 15px 0;
+  padding: 12px; /* גובה של הקוביה */
+  font-size: 20px; /* גודל הפונט */
+  border: 1px solid #3e3e7b; /* גודל הבורדר */
+  border-radius: 20px; /* אם הבורגר עגול או לא */
+  width: 100%; /* אורך הקוביה */
+  max-width: 400px;
+  box-sizing: border-box;
+  background-color: white; /* צבע רקע של הקוביה */
+  color: black;
+}
+.login-input-box:focus {
+  outline: none;
+  border-color: #2a5cc1; /* Border color on focus to match login button */
+  box-shadow: 0 0 20px #007bff; /* Add subtle focus effect */
+}
+
+.login-login-button{
+  padding: 10px 20px;
+  font-size: 25px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #c23c2a;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  margin-top: 20px;
+}
+.login-login-button:hover {
+  background-color: #c54e3f;
+  text-align: center;
+}
+
+.login-signup-button {
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  font-size: 19px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 13px;
+  margin-top: 0px;
+  transition: background-color 0.3s ease;
+}
+.login-signup-button:hover {
+  background-color: #258eff;
+}
+
+.login-footer-text{
+  font-size: 18px;
+  color: #fff;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+/* body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #131138; 
+  height: 100vh;
+}*/
+

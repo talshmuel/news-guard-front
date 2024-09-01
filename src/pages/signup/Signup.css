@@ -1,0 +1,315 @@
+.signup-container {
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: Tahoma;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  height: 60%;
+  min-height: 100vh;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 0px;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  /* box-sizing: border-box; */
+}
+
+.signup-logo{
+  width: 150px;
+  height: 150px;
+  /*margin-top: 1px; 
+  margin-bottom: 1px;*/
+  margin-bottom: 20px;
+  transition: box-shadow 0.4s ease, background-color 0.4s ease;
+  /* transition: transform 0.3s; */
+}
+.signup-logo:hover{
+  box-shadow: 0 0 30px 15px #2c2c61; /* גורם ללוגו להיות זוהר מאחורה כשעוברים מעליו */
+}
+
+.signup-title{
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+  /* font-size: 60px; */
+  font-size: 50px;
+  margin-bottom: 5px;
+  margin-top: 1px;
+  margin: 0;
+}
+
+.signup-title2{
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #bdbbbb;
+}
+
+.signup-form {
+  flex-direction: column; /* שם בשורות */
+  display: flex; /* שם במרכז */
+  justify-content: center; /* שם במרכז */
+  align-items: center; /* שם במרכז */
+  width: 100%; 
+  height: 100%;
+  /* max-width: 1000px; */
+  border-radius: 10px;
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.signup-form-section {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 10px;
+  /* box-sizing: border-box; */
+}
+
+.personaldetails-text {
+  color: #fff;
+  margin-bottom: 1px;
+  margin-top: 10px;
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+
+.signup-input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* justify-content: center;  */
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.signup-input-label{
+  display: flex;
+  /* align-items: center; */
+  /* text-align: right;  */
+  justify-content: space-between;
+  color: white;
+  font-size: 23px;
+  letter-spacing: 2px;
+  margin: 0;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  padding: 10px;
+  min-width: 100px;
+  width: 300px;
+}
+
+
+.signup-input-box{ /* הקוביה שכותבים בה את האימייל וסיסמה */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0;
+  padding: 12px; /* גובה של הקוביה */
+  font-size: 20px; /* גודל הפונט */
+  border: 1px solid #503e7b; /* #007bff;  גודל הבורדר */
+  border-radius: 20px; /* אם הבורגר עגול או לא */
+  width: 100%; /* אורך הקוביה */
+  /* max-width: 400px; */
+  box-sizing: border-box;
+  color: black;
+  height: 60px;
+  background-color: #f3f4f6; /* צבע רקע של הקוביה */
+}
+.signup-input-box:focus {
+  outline: none;
+  border-color: #2a5cc1; /* Border color on focus to match login button */
+  box-shadow: 0 0 20px #007bff; /* Add subtle focus effect */
+}
+
+.signup-checkbox-label{
+  height: 10px;
+  /* width: 10px; */
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 19px;
+  letter-spacing: 1px;
+}
+
+.signup-checkbox-label-input {
+  align-items: center;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.signup-location-permission{
+  color: white;
+  font-size: 23px;
+}
+
+.signup-lower-section{
+  /*1: up 2: right 3: down 4: left*/
+  padding: 0px 20px 0px 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.signup-lower-text{
+  font-size: 20px;
+  color: #fff;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  letter-spacing: 2px;
+}
+
+
+.signup-signup-button {
+  padding: 10px 20px;
+  font-size: 25px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #c23c2a;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  margin-top: 10px;
+}
+.signup-signup-button:hover {
+  background-color: #c54e3f;
+  text-align: center;
+}
+
+.signup-login-button{
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  font-size: 19px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 13px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+.signup-login-button:hover {
+  background-color: #258eff;
+}
+
+/* Custom styles for react-select */
+/* .select__control {
+background-color: #bbd307;
+border: 1px solid #d10d0d;
+border-radius: 4px;
+padding: 5px;
+}
+
+.select__multi-value {
+background-color: #00bfa5;
+color: #6f00ff;
+}
+
+.select__multi-value__label {
+color: #ff0073;
+}
+
+.select__multi-value__remove {
+color: #000; 
+}
+
+.basic-multi-select{
+color: #000 
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**********************************************/
+
+/* .login-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+} */
+
+
+/*************************************/
+/* .checkbox-label {
+  background-color: #064b11;
+  height: 10px;
+  width: 10px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+} */
+
+/* .checkbox-label input {
+  align-items: center;
+  margin-right: 10px;
+} */
+
+/* label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: #fff;
+  width: 100%;
+} */
+
+/* label p {
+  background-color: #000000;
+  margin: 0;
+  padding-right: 10px;
+  min-width: 100px;
+  flex: 1;
+} */
+
+/* .select-box {
+  background-color: #ff9900;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  height: 30px;
+  flex: 2;
+} */
+
+/************************************************************/
+/* body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+} */

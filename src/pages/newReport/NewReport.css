@@ -1,0 +1,218 @@
+.new-report-container {
+  /*padding: 50px 50px 50px 50px;
+  top right bottom right*/
+  padding: 50px;
+  /* margin: 0 auto; */
+  max-width: 600px;
+  background-color: #f0f0f5;
+  border-radius: 10px;
+  box-shadow: 0 0px 100px #000000;
+  
+}
+
+.new-report-headline{
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 50px;
+  
+}
+
+.new-report-text-container,
+.new-report-image-container,
+.new-report-anon-container {
+  margin-bottom: 20px;
+    
+}
+
+.new-report-text-label, .new-report-image-label{
+  display: block;
+  font-size: 20px;
+  color: #555;
+  
+}
+
+.new-report-text-input{
+  width: 100%;
+  height: 150px;
+  font-size: 16px;
+  border: 2px solid #cccbcb;
+  border-radius: 5px;
+  color: #333;
+  background-color: #fff;
+  resize: none; /* האופציה להגדיל את הגודל של הקופסה */
+  
+}
+.new-report-input-text::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Image Area */ 
+.new-report-image-upload{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.new-report-image-input{
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  color: #333;
+  border: 2px solid #cccbcb;
+  background-color: white;
+  border-radius: 5px;
+  flex-grow: 1;
+}
+
+/* Image Preview */
+.new-report-image-preview {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.new-report-image-preview img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 20px;
+}
+
+
+/* Anonymous Report Option */
+.new-report-anon{
+  margin-right: 8px;
+  
+}
+
+
+.new-report-button-container {
+  gap: 100px; /* רווח ביניהם */
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.new-report-submit-button {
+  background-color: #007bff;
+  color: #fff;
+
+  margin-right: 100px;
+
+  width: 100px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+}
+.new-report-submit-button:hover {
+  background-color: #005cbe;
+}
+
+.new-report-cancel-button {
+  background-color: #d73a25;
+  color: #fff;
+
+  width: 100px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.new-report-cancel-button:hover {
+  background-color: #c32f1c;
+}
+
+
+
+
+
+/* .new-report-submit-button{
+  width: 100px;
+  padding: 12px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+  
+.new-report-submit-button:hover {
+  background-color: #005cbe;
+}
+
+.new-report-cancel-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.new-report-cancel-button:hover {
+  background-color: #c82333;
+} */
+
+
+
+
+
+
+
+
+
+  
+
+/* .new-report-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+  }
+  
+  .new-report-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 15px;
+  }
+  
+  input[type="text"], textarea, input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+  }
+  
+  textarea {
+    height: 100px;
+  }
+  
+  .preview-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+   */

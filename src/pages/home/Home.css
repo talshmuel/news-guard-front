@@ -1,0 +1,274 @@
+/* body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    overflow-y: scroll;
+} */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /*center;*/
+  min-height: min-content;
+  border-radius: 30px;
+  padding-top: 70px; /* Adjust for the fixed navbar height */
+  padding-bottom: 10px;
+  height: 100%; /* הגובה של העמוד יהיה מאה אחוז, אז גורם לסקרולר להיות חיצוני */
+  /*overflow: auto;*/ /* זה הסקרולר של האזור הפנימי, אם רוצים אותו אז להוציא מהערה */
+  /* נותן לעשות סקרולר אם יש יותר מדי פוסטים */
+  /*width: 100%;
+  max-width: max-content;
+  min-width: min-content;
+  */
+}
+
+
+/*************** NAVIGATION BAR ***************/
+.home-navbar { /* התפריט למעלה*/
+  background-color: #383847;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center; /* שם באמצע מבחינת גובה */
+  position: fixed;  /* מדביק למעלה */
+  top: 0; /* מדביק למעלה */
+  width: 100%; /* שהכל יהיה מלא */
+  /*justify-content: center;  Center the content horizontally */
+  /* color: #fff; */
+  /* z-index: 1000; */
+  /*left: 0; כל אלו הורסים את התפריט למעלה לא לגעת בהם!!!
+  right: 0;
+  width: max-content;
+  height: max-content;*/
+}
+
+.home-logo-container {
+  flex: 1; /* שם את הלוגו הכי בשמאל */
+  display: flex;
+  justify-content: flex-start;
+}
+
+.home-logo{
+  width: 60px;
+  height: 60px;
+  margin-left: 20px;
+  transition: box-shadow 0.4s ease, background-color 0.4s ease;
+  /*margin-top: 1px; 
+  margin-bottom: 1px;*/
+}
+.home-logo:hover{
+  background-color: #1e1b59;
+  box-shadow: 0 0 30px 10px #3f37b1; /* rgba(47, 0, 255, 0.6); */
+  /* גורם ללוגו להיות זוהר מאחורה כשעוברים מעליו */
+}
+
+.home-center-links {
+  flex: 2; /* Flex grows more to center it */
+  display: flex;
+  justify-content: center; /* Centers the nav items */
+}
+
+.home-tab-list { /* הכפתורים בתפריט שיסודרו בשורה ולא בטור*/
+  list-style-type: none; /* מוריד את הבולטים */
+  padding: 0; /* Remove default padding */
+  display: flex; /* שם בשורה */
+  gap: 15px; /* הרווח בין כל כפתור */
+  margin: 0;
+}
+
+.home-button {
+  background-color: #007bff;
+  color: white; /* צבע הפונט בכפתורים למעלה */
+  letter-spacing: 0.6px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 100px;
+  padding: 10px 20px;
+}
+.home-button:hover {
+  background-color: #218cff;
+  color: #f0f0f0;
+}
+
+.home-logout-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* Aligns the Log Out button on the right */
+}
+
+.home-logout-button {
+  background-color: #1b1b1f;
+  color: white; /* צבע הפונט בכפתורים למעלה */
+  font-size: 20px;
+  border-radius: 100px;
+  padding: 10px 20px;
+  margin: 10px;
+  /* font-weight: bold; */
+  /* letter-spacing: 0.6px; */
+}
+.home-logout-button:hover {
+  background-color: #262630;
+  border-color: #000;
+}
+/*************** END- NAVIGATION BAR ***************/
+
+
+
+/* MAIN AREA */
+.home-reports-section {
+  margin: 20px;
+}
+
+.home-reports-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+} 
+
+.home-loading{
+  color: white;
+}
+
+
+
+/*----------------------------------------------------------------------------------------------*/
+
+/* .buttons{
+  margin-right: 370px;
+}
+
+.nav-button { 
+  width: 100px;
+    color: #fff;
+    margin: 0 10px;
+    padding: 10px 15px;
+    background-color: #00bfa5;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} */
+
+/* .main-content111 {
+    flex-grow: 1;
+    overflow-y: auto;
+    flex: 1;
+    padding: 80px 20px 20px;
+    margin-top: 70px; 
+}
+
+.controls1111 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.control-label { 
+    display: flex;
+    align-items: center;
+  }
+
+.control-select1111 {
+    margin-left: 10px;
+    margin-right: 60px;
+    width: 150px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.example1111{
+  height: 100px;
+  width: 100px;
+}
+
+.report-feed11111 {
+    display: flex;
+    flex-direction: column;
+  }
+
+.report1111 {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial Narrow';
+}
+
+.report-tags11111 {
+  margin-bottom: 10px;
+}
+
+.tag111111 {
+  background-color: #00bfa5;
+  color: #fff;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+}
+
+.report-user111111 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: black;
+  font-size: large;
+}
+
+
+.user-reliability11111 {
+  display: flex;
+  align-items: center;
+}
+
+.star1111 {
+  color: gold;
+  margin-left: 5px;
+}
+
+.report-content111 {
+  margin-bottom: 10px;
+}
+
+.report-text1111{
+  color: black;
+}
+
+.report-image111 {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.report-footer1111 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+ 
+
+.report-interactions1111{
+  background-color: beige;
+}
+
+
+.interaction-button111 {
+  background-color: #00bfa5;
+  border: none;
+  color: #131138;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.interaction-button111:hover {
+  text-decoration: solid;
+  background-color: #03cdbc;
+}
+
+.report-reliability1111 { 
+  display: flex;
+  align-items: center;
+} */

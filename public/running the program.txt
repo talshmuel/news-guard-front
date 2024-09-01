@@ -1,0 +1,38 @@
+## creating the program from scratch:
+## step 1:
+npm create vite@latest <name>
+
+## step 2:
+select javaScript
+
+## step 3:
+cd <path to project>
+
+## step 4:
+npm install
+
+## step 5:
+npm run dev
+
+## step 6:
+code .
+
+--------------------------------------
+
+running:
+npm run dev
+
+installations:
+npm install
+npm install react-scripts
+npm install react-router-dom
+npm install react-select@5.8.0
+
+npm install react-select world-countries // לכל המדינות
+
+
+תמיד לסגור את השרת בסוף העבודה
+כשבאים להתחיל לעבוד, קודם להריץ לראות שעובד
+
+אם השרת עולה, האתר עולה, אבל אין שם שום דבר: לעשות אינספקט (F12)
+
