@@ -3,10 +3,11 @@ import { useEffect } from "react";
 const LocationUpdater = () => {
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
   const userID = userData.userId;
+  console.log("Location Updaterrrrr")
 
   useEffect(() => {
     const sendLocation = async (latitude, longitude) => {
-      // const dateTime = new Date();
+      console.log("before try")
       try {
         const response = await fetch('http://localhost:8080/location/save-location', {
           method: 'POST',
@@ -21,11 +22,11 @@ const LocationUpdater = () => {
         });
 
         const data = await response.text(); // Handles plain text response
-        //console.log("Location data sent:", data);
-        //console.log("user " + userID + " is in location: " + latitude + " " + longitude)
+        console.log("Location data sent:", data);
+        console.log("user " + userID + " is in location: " + latitude + " " + longitude)
       } catch (error) {
         
-        //console.log("Location: ERRORRRR")
+        console.log("Location: ERRORRRR")
         console.error("Error:", error);
       }
     };

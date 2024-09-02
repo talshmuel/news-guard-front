@@ -62,7 +62,7 @@ function HomePage(){
   // console.log("HOME: ", currentDateTime.toLocaleDateString(), currentDateTime.toLocaleTimeString());
   // console.log("==========================================");
   // //////
-
+  console.log("LOGIN: user id=" + userData.userId)
   useEffect(() => {
     const fetchReports = async () => {
       try {

@@ -11,12 +11,10 @@ const ReportsToVerifyUpdater = () => {
 
   useEffect(() => {
     const getReportsToVerifyFromServer = async () => {
-      console.log("1")
       try {
-        console.log("2")
+        console.log("getReportsToVerifyFromServer")
         const response = await fetch(`http://localhost:8080/verification/get-reports-that-guard-need-to-verify?guardID=${userID}`);
         // const response = await fetch(`http://localhost:8080/verification/get-reports-that-guard-need-to-verify?guardID=${userID}`);
-        console.log("3")
 
 
         console.log('reports to verify: Response status:', response.status);
@@ -28,6 +26,7 @@ const ReportsToVerifyUpdater = () => {
             console.log(`Element ${index}:`, element);
           });
 
+          console.log("!@#$%^&")
           if(dataFromServerArray.length > 0){
             console.log("dataFromServerArray.length > 0")
             dataFromServerArray.forEach((element) => {

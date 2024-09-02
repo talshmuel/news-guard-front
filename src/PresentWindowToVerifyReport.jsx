@@ -6,6 +6,7 @@ function PresentWindowToVerifyReport({report}) {
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
   //console.log('PresentWindowToVerifyReport: user id: ',userData.userId);
   const userID = userData.userId;
+  console.log("user id=" + userID)
 
   const [isVisible, setIsVisible] = useState(true); // Local state to control visibility
 
@@ -22,8 +23,6 @@ function PresentWindowToVerifyReport({report}) {
   // console.log("countUsersWhoLiked: " + report.countUsersWhoLiked)
   // console.log("idofUsersWhoLiked: " + report.idofUsersWhoLiked)
   // console.log("anonymousReport: " + report.anonymousReport)
-
-
   // Function to make PUT request
   // const sendVerificationRequest = (reportId, verification) => {
   //   console.log("DEBUG: verification: " + verification + " reportId: " + reportId);
@@ -55,6 +54,7 @@ function PresentWindowToVerifyReport({report}) {
   // };
 
   const sendVerificationRequest = async (reportId, verification) => {
+    console.log("sendVerificationRequest")
     try {
       // console.log("entering try, verification: " + verification)
       const response = await fetch(`http://localhost:8080/verification/update-guard-verification?reportID=${reportId}&guardID=${userID}&verification=${verification}`,
@@ -67,10 +67,12 @@ function PresentWindowToVerifyReport({report}) {
 
       if(response.ok){
         setIsVisible(false); // Hide the window after the request is successful
-        return response.text();
+        console.log("")
+        return response.text("setIsVisible=" + isVisible);
       }
       else
       {
+        console.log("error")
         throw new Error("Failed to update guard verification");
       }
     } catch (error){
