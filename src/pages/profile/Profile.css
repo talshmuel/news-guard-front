@@ -123,8 +123,8 @@
   padding-top: 0px;
   /* max-width: 90vw; */
   width: 100vw; /* Occupy 90% of the viewport width, leaving space on both sides */
-  background-color: #ffffff;
-  color: #000000;  
+  /* background-color: #ffffff; */
+  color: #f3f4f6;
   
 }
 
@@ -135,7 +135,6 @@
   padding-bottom: 5px;
   text-transform: capitalize;
   text-align: center;
-  
 }
 
 .profile-details-img {
@@ -146,7 +145,7 @@
 }
 
 .profile-details-row{
-  color: #000000;
+  /* color: #000000; */
   display: flex;
   /* text-align: center; */
   justify-content: space-around;
@@ -157,7 +156,7 @@
 }
 
 .profile-details-text{
-  color: #000000;
+  color: #f3f4f6;
   font-size: 17px;
   text-transform: capitalize;
   margin-bottom: 0px;

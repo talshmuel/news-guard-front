@@ -92,8 +92,7 @@ function NewReportPage(){
             if (!imageUrl) return; // Abort if image upload fails
         }
 
-        console.log("NEW REPORT: new Date(): " + new Date())
-        console.log("NEW REPORT: new Date().toISOString() " + new Date().toISOString())
+        // console.log("NEW REPORT: new Date(): " + new Date())
         // console.log("NEW REPORT: month: " + dateTime.getMonth)
         // console.log("NEW REPORT: year: " + dateTime.getFullYear)
         // console.log("NEW REPORT: hours: " + dateTime.getHours)
@@ -123,7 +122,7 @@ function NewReportPage(){
           latitude: lat,
           longitude: long,
         };
-        console.log("Sending reportData:", reportData);
+        // console.log("Sending reportData:", reportData);
 
         
     
@@ -148,7 +147,7 @@ function NewReportPage(){
         }
 
         if (response.ok) {
-            console.log('Report successful:' + responseBody + "time: " + dateTime);
+            console.log('NEW REPORT: Report successful:' + responseBody + "time: " + dateTime);
             navigate('/home');
           } else {
             //console.log('New Report: Report failed');

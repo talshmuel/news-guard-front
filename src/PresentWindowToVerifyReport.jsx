@@ -56,7 +56,7 @@ function PresentWindowToVerifyReport({report}) {
 
   const sendVerificationRequest = async (reportId, verification) => {
     try {
-      console.log("entering try, verification: " + verification)
+      // console.log("entering try, verification: " + verification)
       const response = await fetch(`http://localhost:8080/verification/update-guard-verification?reportID=${reportId}&guardID=${userID}&verification=${verification}`,
         {
         method: 'PUT',
@@ -66,13 +66,11 @@ function PresentWindowToVerifyReport({report}) {
         });
 
       if(response.ok){
-        console.log("OKAY")
         setIsVisible(false); // Hide the window after the request is successful
         return response.text();
       }
       else
       {
-        console.log("NOT OKAY")
         throw new Error("Failed to update guard verification");
       }
     } catch (error){
@@ -80,35 +78,35 @@ function PresentWindowToVerifyReport({report}) {
     }
   };
 
-  const sendVerificationRequest2 = (reportId, verification) => {
-    console.log("DEBUG: verification: " + verification + " reportId: " + reportId);
-    fetch(`http://localhost:8080/verification/update-guard-verification?reportID=${reportId}&guardID=${userID}&verification=${verification}`,
-      {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response =>
-    {
-      if (response.ok) {
-        console.log("OKAY")
-        return response.text();
-      }
-      else
-      {
-        console.log("NOT OKAY")
-        throw new Error("Failed to update guard verification");
-      }
-    })
-    .then(data => {
-      //console.log("Server response:", data);
-      setIsVisible(false); // Hide the window after the request is successful
-    })
-    .catch(error => {
-      console.error("Error:", error);
-    });
-  };
+  // const sendVerificationRequest2 = (reportId, verification) => {
+  //   console.log("DEBUG: verification: " + verification + " reportId: " + reportId);
+  //   fetch(`http://localhost:8080/verification/update-guard-verification?reportID=${reportId}&guardID=${userID}&verification=${verification}`,
+  //     {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  //   .then(response =>
+  //   {
+  //     if (response.ok) {
+  //       console.log("OKAY")
+  //       return response.text();
+  //     }
+  //     else
+  //     {
+  //       console.log("NOT OKAY")
+  //       throw new Error("Failed to update guard verification");
+  //     }
+  //   })
+  //   .then(data => {
+  //     //console.log("Server response:", data);
+  //     setIsVisible(false); // Hide the window after the request is successful
+  //   })
+  //   .catch(error => {
+  //     console.error("Error:", error);
+  //   });
+  // };
 
   // Handlers for buttons
   const handleApprovalClick = (reportId) => {
