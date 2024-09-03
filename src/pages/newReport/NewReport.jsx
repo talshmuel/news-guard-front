@@ -147,7 +147,7 @@ function NewReportPage(){
         }
 
         if (response.ok) {
-            console.log('NEW REPORT: Report successful:' + responseBody + "time: " + dateTime);
+            //console.log('NEW REPORT: Report successful:' + responseBody + "time: " + dateTime);
             navigate('/home');
           } else {
             //console.log('New Report: Report failed');

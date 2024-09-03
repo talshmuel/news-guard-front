@@ -62,6 +62,11 @@
   /* גורם ללוגו להיות זוהר מאחורה כשעוברים מעליו */
 }
 
+.home-hello-user{
+  color: white;
+  padding-left: 30px;
+}
+
 .home-center-links {
   flex: 2; /* Flex grows more to center it */
   display: flex;

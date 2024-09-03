@@ -62,7 +62,6 @@ function HomePage(){
   // console.log("HOME: ", currentDateTime.toLocaleDateString(), currentDateTime.toLocaleTimeString());
   // console.log("==========================================");
   // //////
-  console.log("LOGIN: user id=" + userData.userId)
   useEffect(() => {
     const fetchReports = async () => {
       try {
@@ -105,6 +104,7 @@ function HomePage(){
       <header className="home-navbar">
         <div className="home-logo-container">
           <img src={logo} alt="News Guard Logo" className="home-logo" />
+          <p className="home-hello-user">Hello {userData.userFullName} </p>
         </div>
         <div className="home-center-links">
           <ul className="home-tab-list">

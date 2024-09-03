@@ -28,7 +28,7 @@ function LoginPage() {
 
       if (response.ok) {
         const result = await response.json();
-        //console.log('login successful:', result);
+        console.log('login successful:', result);
         localStorage.setItem('userData', JSON.stringify(result));
         navigate('/home');
       }

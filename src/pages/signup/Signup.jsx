@@ -47,14 +47,14 @@ function SignupPage() {
 
       const data = await response.json();
       if (response.ok) {
-        console.log('profile picture uploaded')
+        //console.log('profile picture uploaded')
         return data.imageUrl; // URL returned from the server
       } else {
-        console.log('profile picture failed')
+        //console.log('profile picture failed')
         throw new Error(data.message || 'Image upload failed');
       }
     } catch (error) {
-      console.log('profile picture ERROR')
+      //console.log('profile picture ERROR')
       console.error('Error uploading image:', error);
       alert('An error occurred while uploading the image.');
       return null;
@@ -88,7 +88,7 @@ function SignupPage() {
     // }
     let imageUrl = '';
     if (selectedImage) {
-      console.log("imageURL: ")
+      //("imageURL: ")
       imageUrl = await uploadImage(selectedImage);
       if (!imageUrl) return; // Abort if image upload fails
     }
@@ -103,7 +103,7 @@ function SignupPage() {
       phoneNumber,
       locationAccessPermission
     };
-    console.log("Sending signupData:", signupData);
+    //console.log("Sending signupData:", signupData);
 
     try {
       const response = await fetch('http://localhost:8080/register', {
@@ -117,7 +117,7 @@ function SignupPage() {
       });
 
       if (response.ok) {
-        console.log("SIGN UP SUCCESSFULL!");
+        //console.log("SIGN UP SUCCESSFULL!");
         navigate('/');
         // Assuming the server returns a JSON object upon successful signup
         //const result = await response.json();
