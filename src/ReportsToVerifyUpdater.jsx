@@ -7,7 +7,8 @@ const ReportsToVerifyUpdater = () => {
   console.log("userID=" + userID);
 
   const [reportToVerify, setReportToVerify] = useState(null); // State to track the report that needs to be verified
-
+  //const [pendingReportsList, setPendingReportsList] = useState([]); 
+  
   useEffect(() => {
     const intervalId = setInterval(async () => {  // Run this effect on an interval to check for new reports periodically
       console.log("before try: Fetching reports to verify...");
@@ -16,21 +17,35 @@ const ReportsToVerifyUpdater = () => {
         console.log('Response status:', response.status);
 
         if (response.ok) {
-          const data = await response.json();
-          let dataFromServerArray = Object.values(data);
+          console.log("ok")
+          const data = await response.json(); // הדאטה שקיבלתי מהשרת
+          let dataFromServerArray = Object.values(data); // הופך אותה למערך
 
           if (dataFromServerArray.length > 0) {
+            // meaning we did get soemthing from the server.
             console.log("dataFromServerArray.length > 0");
+            // prints the array the server gave me
+            dataFromServerArray.forEach((element, index) => {
+              console.log(`Element ${index}:`, element);
+            });
+            // PresentWindowToVerifyReport(dataFromServerArray[0], userID);
+            setReportToVerify(dataFromServerArray[0]); // put the first element to display
+            console.log("New report to verify: ", dataFromServerArray[0]);
+            //const newReport = dataFromServerArray[0];
+            //console.log("new report: " + newReport.text)
+            // if (!pendingReportsList.some(report => report.reportID === newReport.reportID)) {
+            //   // if this report is not on pending list, add it
+            //   setPendingReportsList([...pendingReportsList, newReport]);
+            //   console.log("added new element");
+            //   setReportToVerify(newReport); // Show the new report in the window
+            // } else {
+            //   console.log("not new !")
+            // }
 
-            const newReport = dataFromServerArray[0];
-            if (!pendingReportsList.some(report => report.reportID === newReport.reportID)) {
-              setPendingReportsList([...pendingReportsList, newReport]);
-              console.log("added new element");
-              setReportToVerify(newReport); // Show the new report in the window
-            }
 
           } else {
             console.log("dataFromServerArray = 0");
+            // meaning we didnt get anything from the server
             setReportToVerify(null); // No reports to verify
           }
 
@@ -38,7 +53,7 @@ const ReportsToVerifyUpdater = () => {
       } catch (error) {
         console.error("Error fetching reports:", error);
       }
-    }, 60000); // Check every 1 minute
+    }, 20000); // Check every 1 minute
 
     return () => clearInterval(intervalId); // Cleanup the interval on component unmount
   }, [userID]);
@@ -53,6 +68,21 @@ const ReportsToVerifyUpdater = () => {
 };
 
 export default ReportsToVerifyUpdater;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
