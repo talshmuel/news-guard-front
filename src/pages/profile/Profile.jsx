@@ -57,6 +57,13 @@ function ProfilePage() {
   };
 
 
+  const handleLogout = () => {
+    // Clear user data from localStorage
+    localStorage.removeItem('userData');
+  
+    // Redirect to login page
+    window.location.href = '/'; // Assuming '/' is the login route
+  };
 
   return (
   <div className="ignore">
@@ -94,11 +101,11 @@ function ProfilePage() {
                 </ul>
               </div> {/* profile-center-links */}
               <div className="profile-logout-container">
-                <Link to="/">
-                  <button className="home-logout-button">
+                {/* <Link to="/"> */}
+                  <button className="home-logout-button" onClick={handleLogout}>
                   <i className="fas fa-sign-out-alt"></i>
                   </button>
-                </Link>
+                {/* </Link> */}
               </div> {/* profile-logout-container */}
             </header> {/* profile-navbar */}
           {/* END- NAVIGATION BAR */}

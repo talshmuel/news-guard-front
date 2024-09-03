@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const LocationUpdater = () => {
   const userData = JSON.parse(localStorage.getItem('userData'));
   const userID = userData.userId;
-  //console.log("Location Updaterrrrr")
+  console.log("Location Updater")
 
   useEffect(() => {
     const sendLocation = async (latitude, longitude) => {

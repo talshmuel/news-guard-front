@@ -2,6 +2,9 @@ import { useEffect, useState, useRef } from "react";
 import PresentWindowToVerifyReport from "./PresentWindowToVerifyReport";
 
 const ReportsToVerifyUpdater = () => {
+  console.log("ReportsToVerifyUpdater")
+
+
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
   const userID = userData.userId;
   console.log("userID=" + userID);
@@ -41,8 +44,6 @@ const ReportsToVerifyUpdater = () => {
             // } else {
             //   console.log("not new !")
             // }
-
-
           } else {
             console.log("dataFromServerArray = 0");
             // meaning we didnt get anything from the server

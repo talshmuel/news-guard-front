@@ -96,6 +96,14 @@ function HomePage(){
     fetchReports();
   }, []);
 
+  const handleLogout = () => {
+    // Clear user data from localStorage
+    localStorage.removeItem('userData');
+  
+    // Redirect to login page
+    window.location.href = '/'; // Assuming '/' is the login route
+  };
+  
 
   return(
     <div className="home-container">
@@ -131,11 +139,11 @@ function HomePage(){
           </ul> {/*home-tab-list*/}
         </div> {/*home-center-links*/}
         <div className="home-logout-container">
-          <Link to="/">
-            <button className="home-logout-button">
+          {/* <Link to="/"> */}
+            <button className="home-logout-button" onClick={handleLogout}>
               <i className="fas fa-sign-out-alt"></i>
             </button>
-          </Link>
+          {/* </Link> */}
         </div> {/*home-logout-container*/}
       </header> {/*home-navbar*/}
     

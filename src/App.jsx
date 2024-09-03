@@ -39,14 +39,41 @@ const router = createBrowserRouter([
 
 
 function App() {
-  // version 1: בלי ההתנייה 
-  return ( 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check if the user is logged in by looking for userData in localStorage
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    if (userData && userData.userId) {
+      setIsLoggedIn(true);  // User is logged in
+    } else {
+      setIsLoggedIn(false); // User is logged out
+    }
+  }, []);
+
+  return (
     <div>
+      {/* Always show the router */}
       <RouterProvider router={router} />
-      <LocationUpdater />
-      <ReportsToVerifyUpdater />
+
+      {/* Conditionally render updaters only when the user is logged in */}
+      {isLoggedIn && (
+        <>
+          <LocationUpdater />
+          <ReportsToVerifyUpdater />
+        </>
+      )}
     </div>
   );
+  
+  // version 1: בלי ההתנייה 
+  // return ( 
+  //   <div>
+  //     <RouterProvider router={router} />
+  //     <LocationUpdater />
+  //     <ReportsToVerifyUpdater />
+  //   </div>
+  // );
 
 
   // version 2: עם התנייה (לא עובד)
