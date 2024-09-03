@@ -14,13 +14,13 @@ function ProfilePage() {
   const [error, setError] = useState(null);
 
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve logged-in user's data
-  // console.log("PROFILE: user id=" + userData.userId)
-
+  const userID = userData.userId;
+  console.log("PROFILE: user id=" + userID)
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/profile-page/get-profile?userID=${userData.userId}`);
+        const response = await fetch(`http://localhost:8080/profile-page/get-profile?userID=${userID}`);
         //console.log('PROFILE: Response status:', response.status);
 
         if (response.ok)
@@ -49,7 +49,7 @@ function ProfilePage() {
     };
  
     fetchProfile();
-  }, [userData.userId]);
+  }, [userID]);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);

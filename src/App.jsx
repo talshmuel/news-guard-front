@@ -31,21 +31,32 @@ const router = createBrowserRouter([
 ]);
 
 // Function to check user login status
-const checkUserLoginStatus = () => {
-  // You can check localStorage, cookies, or some other method to verify the user's login status.
-  const user = localStorage.getItem('user');
-  return user ? true : false;
-};
+// const checkUserLoginStatus = () => {
+//   // You can check localStorage, cookies, or some other method to verify the user's login status.
+//   const user = localStorage.getItem('user');
+//   return user ? true : false;
+// };
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // version 1: בלי ההתנייה 
+  return ( 
+    <div>
+      <RouterProvider router={router} />
+      <LocationUpdater />
+      <ReportsToVerifyUpdater />
+    </div>
+  );
 
-  useEffect(() => {
-    // Check if the user is logged in when the component mounts
-    const loginStatus = checkUserLoginStatus();
-    setIsLoggedIn(loginStatus);
-  }, []);
+
+  // version 2: עם התנייה (לא עובד)
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // useEffect(() => {
+  //   // Check if the user is logged in when the component mounts
+  //   const loginStatus = checkUserLoginStatus();
+  //   setIsLoggedIn(loginStatus);
+  // }, []);
 
   // return (
   //   <div>
@@ -59,13 +70,7 @@ function App() {
   //   </div>
   // );
   
-  return ( 
-    <div>
-      <RouterProvider router={router} />
-      <LocationUpdater />
-      <ReportsToVerifyUpdater />
-    </div>
-  );
+  
 }
 
 

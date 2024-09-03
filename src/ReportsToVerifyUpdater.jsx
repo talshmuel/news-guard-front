@@ -1,6 +1,62 @@
 import { useEffect, useState, useRef } from "react";
 import PresentWindowToVerifyReport from "./PresentWindowToVerifyReport";
 
+const ReportsToVerifyUpdater = () => {
+  const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
+  const userID = userData.userId;
+  console.log("userID=" + userID);
+
+  const [reportToVerify, setReportToVerify] = useState(null); // State to track the report that needs to be verified
+
+  useEffect(() => {
+    const intervalId = setInterval(async () => {  // Run this effect on an interval to check for new reports periodically
+      console.log("before try: Fetching reports to verify...");
+      try {
+        const response = await fetch(`http://localhost:8080/verification/get-reports-that-guard-need-to-verify?guardID=${userID}`);
+        console.log('Response status:', response.status);
+
+        if (response.ok) {
+          const data = await response.json();
+          let dataFromServerArray = Object.values(data);
+
+          if (dataFromServerArray.length > 0) {
+            console.log("dataFromServerArray.length > 0");
+
+            const newReport = dataFromServerArray[0];
+            if (!pendingReportsList.some(report => report.reportID === newReport.reportID)) {
+              setPendingReportsList([...pendingReportsList, newReport]);
+              console.log("added new element");
+              setReportToVerify(newReport); // Show the new report in the window
+            }
+
+          } else {
+            console.log("dataFromServerArray = 0");
+            setReportToVerify(null); // No reports to verify
+          }
+
+        }
+      } catch (error) {
+        console.error("Error fetching reports:", error);
+      }
+    }, 60000); // Check every 1 minute
+
+    return () => clearInterval(intervalId); // Cleanup the interval on component unmount
+  }, [userID]);
+
+  return (
+    <>
+      {reportToVerify && (
+        <PresentWindowToVerifyReport report={reportToVerify} userID={userID} />
+      )}
+    </>
+  );
+};
+
+export default ReportsToVerifyUpdater;
+
+
+
+
 // const ReportsToVerifyUpdater = () => {
 //   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
 //   const userID = userData.userId;
@@ -178,58 +234,7 @@ import PresentWindowToVerifyReport from "./PresentWindowToVerifyReport";
 // export default ReportsToVerifyUpdater;
 
 
-const ReportsToVerifyUpdater = () => {
-  const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
-  const userID = userData.userId;
-  console.log("userID=" + userID);
 
-  const [reportToVerify, setReportToVerify] = useState(null); // State to track the report that needs to be verified
-
-  useEffect(() => {
-    const intervalId = setInterval(async () => {  // Run this effect on an interval to check for new reports periodically
-      console.log("before try: Fetching reports to verify...");
-      try {
-        const response = await fetch(`http://localhost:8080/verification/get-reports-that-guard-need-to-verify?guardID=${userID}`);
-        console.log('Response status:', response.status);
-
-        if (response.ok) {
-          const data = await response.json();
-          let dataFromServerArray = Object.values(data);
-
-          if (dataFromServerArray.length > 0) {
-            console.log("dataFromServerArray.length > 0");
-
-            const newReport = dataFromServerArray[0];
-            if (!pendingReportsList.some(report => report.reportID === newReport.reportID)) {
-              setPendingReportsList([...pendingReportsList, newReport]);
-              console.log("added new element");
-              setReportToVerify(newReport); // Show the new report in the window
-            }
-
-          } else {
-            console.log("dataFromServerArray = 0");
-            setReportToVerify(null); // No reports to verify
-          }
-
-        }
-      } catch (error) {
-        console.error("Error fetching reports:", error);
-      }
-    }, 60000); // Check every 1 minute
-
-    return () => clearInterval(intervalId); // Cleanup the interval on component unmount
-  }, [userID]);
-
-  return (
-    <>
-      {reportToVerify && (
-        <PresentWindowToVerifyReport report={reportToVerify} userID={userID} />
-      )}
-    </>
-  );
-};
-
-export default ReportsToVerifyUpdater;
 
 
 

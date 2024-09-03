@@ -7,6 +7,11 @@ function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // const { setUserData2 } = useContext(UserContext); // new 3/9 14:15
+  // const { userData2 } = useContext(UserContext); // new 3/9 14:15
+  // const userID = userData2.userId; // new 3/9 14:15
+  // console.log("user id = " + userID) 
+
   const navigate = useNavigate(); // Initialize the useNavigate hook
 
   const handleSubmit = async (e) => {
@@ -29,7 +34,7 @@ function LoginPage() {
       if (response.ok) {
         const result = await response.json();
         console.log('login successful:', result);
-        localStorage.setItem('userData', JSON.stringify(result));
+        localStorage.setItem('userData', JSON.stringify(result)); // 3/9
         navigate('/home');
       }
       else {

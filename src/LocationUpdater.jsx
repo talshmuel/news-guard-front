@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 
+
 const LocationUpdater = () => {
-  const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
+  const userData = JSON.parse(localStorage.getItem('userData'));
   const userID = userData.userId;
   //console.log("Location Updaterrrrr")
 

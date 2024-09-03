@@ -79,7 +79,7 @@ function Report({ report }) {
 
       if (response.ok) {
         const result = await response.text();
-        console.log("REPORT: Comment added successfully: ", result);
+        //console.log("REPORT: Comment added successfully: ", result);
         // Add the new comment to the list of comments
         setComments([...comments, 
           { text: newComment, commenterFullName: userData.userFullName}

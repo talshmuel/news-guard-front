@@ -4,6 +4,7 @@ import logo from '../../../public/logo.jpg';
 import Report from './Report'; // Import the Report component
 import { useEffect, useState } from 'react';
 
+
 /*
       לייק זה פונקציית פוט
       <PUT></PUT>
@@ -25,13 +26,11 @@ import { useEffect, useState } from 'react';
       -add button "comment"
 */
 
-
 function HomePage(){
   const navigate = useNavigate(); // Initialize the useNavigate hook
 
-
-
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
+
   // console.log('HOME: user id: ',userData.userId);
   const [reports, setReports] = useState([]);
   const [error, setError] = useState(null);

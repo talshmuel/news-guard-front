@@ -3,6 +3,7 @@ import './NewReport.css';
 import logo from '../../../public/logo.jpg'
 import React, { useState } from "react";
 
+
 function NewReportPage(){
     const [anonymousReport, setAnonymousReport] = useState(false); // anonymousReport : false
     const [imageURL, setImageURL] = useState(''); 
