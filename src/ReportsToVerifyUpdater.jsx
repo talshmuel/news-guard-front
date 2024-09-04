@@ -2,22 +2,18 @@ import { useEffect, useState, useRef } from "react";
 import PresentWindowToVerifyReport from "./PresentWindowToVerifyReport";
 
 const ReportsToVerifyUpdater = () => {
-  console.log("ReportsToVerifyUpdater")
-
-
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
   let userID; // = userData.userId;
   if(!userData){
-    userID = 0;
+    userID = 1; // for now defualt is 1: nitzan sde or
   } else{
     userID = userData.userId;
   }
   console.log("userID = " + userID)
-
+  //let userID = userData ? userData.userId : 1;
 
 
   const [reportToVerify, setReportToVerify] = useState(null); // State to track the report that needs to be verified
-  //const [pendingReportsList, setPendingReportsList] = useState([]); 
   
   useEffect(() => {
     const intervalId = setInterval(async () => {  // Run this effect on an interval to check for new reports periodically
@@ -26,50 +22,55 @@ const ReportsToVerifyUpdater = () => {
         const response = await fetch(`http://localhost:8080/verification/get-reports-that-guard-need-to-verify?guardID=${userID}`);
         console.log('Response status:', response.status);
 
-        if (response.ok) {
+        if (response.ok)
+        {
           console.log("ok")
-          const data = await response.json(); // הדאטה שקיבלתי מהשרת
-          let dataFromServerArray = Object.values(data); // הופך אותה למערך
+          const data = await response.json(); // data the server gave me
+          let dataFromServerArray = Object.values(data); // make it an array
 
-          if (dataFromServerArray.length > 0) {
-            // meaning we did get soemthing from the server.
+          if (dataFromServerArray.length > 0) // meaning we did get soemthing from the server.
+          {
             console.log("dataFromServerArray.length > 0");
-            // prints the array the server gave me
-            dataFromServerArray.forEach((element, index) => {
+            dataFromServerArray.forEach((element, index) => { // prints the array the server gave me
               console.log(`Element ${index}:`, element);
             });
-            // PresentWindowToVerifyReport(dataFromServerArray[0], userID);
             setReportToVerify(dataFromServerArray[0]); // put the first element to display
             console.log("New report to verify: ", dataFromServerArray[0]);
-            //const newReport = dataFromServerArray[0];
-            //console.log("new report: " + newReport.text)
-            // if (!pendingReportsList.some(report => report.reportID === newReport.reportID)) {
-            //   // if this report is not on pending list, add it
-            //   setPendingReportsList([...pendingReportsList, newReport]);
-            //   console.log("added new element");
-            //   setReportToVerify(newReport); // Show the new report in the window
-            // } else {
-            //   console.log("not new !")
-            // }
-          } else {
+          }
+          else // meaning we didnt get anything from the server
+          {
             console.log("dataFromServerArray = 0");
-            // meaning we didnt get anything from the server
             setReportToVerify(null); // No reports to verify
           }
-
         }
-      } catch (error) {
-        console.error("Error fetching reports:", error);
+        else
+        {
+          console.log("response not ok")
+          return;
+        }
+      } catch (error)
+      {
+        console.error("!@#$Error fetching reports:", error);
       }
     }, 20000); // Check every 20 seconds
 
     return () => clearInterval(intervalId); // Cleanup the interval on component unmount
   }, [userID]);
 
+  // Function to close the window
+  const handleCloseWindow = () => {
+    console.log("handleCloseWindow");
+    setReportToVerify(null);
+  };
+
   return (
     <>
       {reportToVerify && (
-        <PresentWindowToVerifyReport report={reportToVerify} userID={userID} />
+        <PresentWindowToVerifyReport
+        report={reportToVerify}
+        userID={userID}
+        onClose={handleCloseWindow}
+        />
       )}
     </>
   );

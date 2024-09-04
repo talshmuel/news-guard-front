@@ -2,12 +2,10 @@ import React, { useEffect, useState, useRef } from "react";
 import './PresentWindowToVerifyReport.css';
 
 
-function PresentWindowToVerifyReport({report}) {
+function PresentWindowToVerifyReport({report, onClose}) {
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
   const userID = userData.userId;
-  console.log("user id=" + userID)
-
-  // const [isVisible, setIsVisible] = useState(true); // Local state to control visibility
+  console.log("user id = " + userID)
 
   console.log("report to show: " + JSON.stringify(report));
   
@@ -57,6 +55,7 @@ function PresentWindowToVerifyReport({report}) {
     console.log("sendVerificationRequest")
     try {
       console.log("entering try, verification: " + verification)
+      console.log("reportID=" + reportId + " userID=" + userID + " verification=", verification)
       const response = await fetch(`http://localhost:8080/verification/update-guard-verification?reportID=${reportId}&guardID=${userID}&verification=${verification}`,
         {
         method: 'PUT',
@@ -67,6 +66,8 @@ function PresentWindowToVerifyReport({report}) {
 
       if(response.ok){
         console.log("Verification updated successfully");
+        onClose();
+        console.log("onClose()")
         //setIsVisible(false); // Hide the window after the request is successful
         // return response.text("setIsVisible=" + isVisible);
       }
@@ -78,6 +79,7 @@ function PresentWindowToVerifyReport({report}) {
     } catch (error){
       console.error("Error:", error);
       console.log("ERRORRRRR")
+      return;
     }
   };
 
@@ -113,25 +115,6 @@ function PresentWindowToVerifyReport({report}) {
 
   return (
     <div className="present-report-container">
-      
-      {/* <div className="present-report-header"> */}
-        {/* <p className="present-report-details"><strong>Reporter: </strong>{report.anonymous ? 'Anonymous' : report.reporterFullName}</p> */}
-        {/* <p className="present-report-details">⭐ Report Reliability: {report.reliabilityRate} ⭐</p> */}
-        {/* <p className="present-report-details">Location: {report.location.x}, {report.location.y}</p> */}
-        {/* <p className="present-report-details">{new Date(report.timeReported).toLocaleString()}</p> */}
-      {/* </div> */}
-
-      {/* <div className="present-report-header">
-        <div className="present-report-details-left">
-          <strong>Reporter: </strong>{report.anonymous ? 'Anonymous' : report.reporterFullName}
-        </div>
-        <div className="present-report-details-center">
-          ⭐ Report Reliability: {report.reliabilityRate} ⭐
-        </div>
-        <div className="present-report-details-right">
-          {new Date(report.timeReported).toLocaleString()}
-        </div>
-      </div> */}
 
       <div className="present-report-header">
         <div className="present-report-section present-report-details-left">

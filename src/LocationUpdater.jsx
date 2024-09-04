@@ -5,7 +5,7 @@ const LocationUpdater = () => {
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
   let userID; // = userData.userId;
   if(!userData){
-    userID = 0;
+    userID = 1; // for now default is 1: nitzan sde or
   } else{
     userID = userData.userId;
   }
