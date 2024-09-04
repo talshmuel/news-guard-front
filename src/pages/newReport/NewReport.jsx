@@ -4,6 +4,7 @@ import logo from '../../../public/logo.jpg'
 import React, { useState } from "react";
 
 
+
 function NewReportPage(){
     const [anonymousReport, setAnonymousReport] = useState(false); // anonymousReport : false
     const [imageURL, setImageURL] = useState(''); 
@@ -19,6 +20,13 @@ function NewReportPage(){
     
     const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve user ID from local storage
     const reporterID = userData ? userData.userId : null;
+
+    // const { userData2 } = useContext(UserContext); // new 3/9 14:15
+    // const reporterID = userData2 ? userData.userId : null;
+    // const userID = userData2.userId; // new 3/9 14:15
+    // console.log("user id = " + userID) 
+
+  
 
     const handleImageUpload = (e) => {
       const file = e.target.files[0];

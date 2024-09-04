@@ -135,6 +135,15 @@ function SignupPage() {
       alert('Failed to connect to the server. Please try again.');
     }
   }; 
+
+
+  const handleLogin = () => {
+    // Clear user data from localStorage
+    localStorage.removeItem('userData');
+  
+    // Redirect to login page
+    window.location.href = '/'; // Assuming '/' is the login route
+  };
    
     
 
@@ -262,7 +271,7 @@ function SignupPage() {
       <form className="signup-lower-section">
       <p className="signup-lower-text">Already have an account?</p>
       <Link to="/">
-        <button className="signup-login-button">Login</button>
+        <button className="signup-login-button" onClick={handleLogin}>Login</button>
       </Link>
       </form>
 

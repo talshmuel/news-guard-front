@@ -3,14 +3,8 @@ import PresentWindowToVerifyReport from "./PresentWindowToVerifyReport";
 
 const ReportsToVerifyUpdater = () => {
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
-  let userID; // = userData.userId;
-  if(!userData){
-    userID = 1; // for now defualt is 1: nitzan sde or
-  } else{
-    userID = userData.userId;
-  }
-  console.log("userID = " + userID)
-  //let userID = userData ? userData.userId : 1;
+  let userID = userData ? userData.userId : 1;
+  console.log("user id = " + userID)
 
 
   const [reportToVerify, setReportToVerify] = useState(null); // State to track the report that needs to be verified
@@ -19,12 +13,15 @@ const ReportsToVerifyUpdater = () => {
     const intervalId = setInterval(async () => {  // Run this effect on an interval to check for new reports periodically
       console.log("before try: Fetching reports to verify...");
       try {
+        const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
+        let userID = userData ? userData.userId : 1;
+        console.log("$user id = " + userID)
         const response = await fetch(`http://localhost:8080/verification/get-reports-that-guard-need-to-verify?guardID=${userID}`);
         console.log('Response status:', response.status);
 
         if (response.ok)
         {
-          console.log("ok")
+          // console.log("ok")
           const data = await response.json(); // data the server gave me
           let dataFromServerArray = Object.values(data); // make it an array
 
@@ -50,7 +47,7 @@ const ReportsToVerifyUpdater = () => {
         }
       } catch (error)
       {
-        console.error("!@#$Error fetching reports:", error);
+        console.error("Error fetching reports:", error);
       }
     }, 20000); // Check every 20 seconds
 

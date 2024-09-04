@@ -41,15 +41,6 @@ const router = createBrowserRouter([
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // useEffect(() => {
-  //   // Check if the user is logged in by looking for userData in localStorage
-  //   const userData = JSON.parse(localStorage.getItem('userData'));
-  //   if (userData && userData.userId) {
-  //     setIsLoggedIn(true);  // User is logged in
-  //   } else {
-  //     setIsLoggedIn(false); // User is logged out
-  //   }
-  // }, []);
   useEffect(() => {
     const userData = localStorage.getItem('userData');
     if (userData) {
@@ -58,6 +49,21 @@ function App() {
       setIsLoggedIn(false); // Otherwise, user is not logged in
     }
   }, []); // Run once when the component mounts
+
+  // version 1: בלי ההתנייה 
+  return ( 
+    <div>
+      <RouterProvider router={router} />
+      <LocationUpdater />
+      <ReportsToVerifyUpdater />
+    </div>
+  );
+
+}
+
+
+export default App;
+
 
   // return (
   //   <div>
@@ -75,14 +81,7 @@ function App() {
   //   </div>
   // );
   
-  // version 1: בלי ההתנייה 
-  return ( 
-    <div>
-      <RouterProvider router={router} />
-      <LocationUpdater />
-      <ReportsToVerifyUpdater />
-    </div>
-  );
+  
 
 
   // version 2: עם התנייה (לא עובד)
@@ -107,10 +106,7 @@ function App() {
   // );
   
   
-}
 
-
-export default App;
 
 
 

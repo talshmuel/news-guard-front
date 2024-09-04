@@ -7,11 +7,6 @@ function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // const { setUserData2 } = useContext(UserContext); // new 3/9 14:15
-  // const { userData2 } = useContext(UserContext); // new 3/9 14:15
-  // const userID = userData2.userId; // new 3/9 14:15
-  // console.log("user id = " + userID) 
-
   const navigate = useNavigate(); // Initialize the useNavigate hook
 
   const handleSubmit = async (e) => {
@@ -35,6 +30,11 @@ function LoginPage() {
         const result = await response.json();
         console.log('login successful:', result);
         localStorage.setItem('userData', JSON.stringify(result)); // 3/9
+
+        localStorage.setItem('userIdForLocation', JSON.stringify(result.userId)); // 3/9
+        const globalUserId = JSON.parse(localStorage.getItem('userIdForLocation'));
+        console.log("user id location - " + globalUserId)
+
         navigate('/home');
       }
       else {
@@ -52,10 +52,11 @@ function LoginPage() {
         //console.error('Login failed:', response.statusText);
       }
     } catch (error) {
-      //console.error('Error occurred during login:', error);
+      console.error('Error occurred during login:', error);
       alert('An error occurred during login. Please try again.');
     }
   };
+
 
 
 
