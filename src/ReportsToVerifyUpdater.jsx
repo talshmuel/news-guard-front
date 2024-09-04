@@ -12,6 +12,7 @@ const ReportsToVerifyUpdater = () => {
   useEffect(() => {
     const intervalId = setInterval(async () => {  // Run this effect on an interval to check for new reports periodically
       console.log("before try: Fetching reports to verify...");
+      if(userID !== 1){
       try {
         const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
         let userID = userData ? userData.userId : 1;
@@ -49,6 +50,7 @@ const ReportsToVerifyUpdater = () => {
       {
         console.error("Error fetching reports:", error);
       }
+    }
     }, 20000); // Check every 20 seconds
 
     return () => clearInterval(intervalId); // Cleanup the interval on component unmount

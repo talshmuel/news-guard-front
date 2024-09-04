@@ -18,18 +18,26 @@ const LocationUpdater = () => {
     // console.log("inside use effect")
     const sendLocation = async (latitude, longitude) => {
 
-      const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
-      let userID;
-      if(userData){
-        userID = userData.userId;
-        console.log("userID = " + userID)
-      } else{
-        userID = 1;
-        console.log("userID = " + userID)
-      }
-
       // console.log("before try")
+
+      
       try {
+        const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
+        let userID;
+        if(userData){
+          userID = userData.userId;
+          console.log("userID = " + userID)
+        } else{
+          userID = 1;
+          console.log("userID = " + userID)
+        }
+
+        if(userID === 1)
+        {
+          latitude = 0;
+          longitude = 0;
+        }
+  
         const response = await fetch('http://localhost:8080/location/save-location', {
           method: 'POST',
           headers: {
