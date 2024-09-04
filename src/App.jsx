@@ -41,39 +41,48 @@ const router = createBrowserRouter([
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // useEffect(() => {
+  //   // Check if the user is logged in by looking for userData in localStorage
+  //   const userData = JSON.parse(localStorage.getItem('userData'));
+  //   if (userData && userData.userId) {
+  //     setIsLoggedIn(true);  // User is logged in
+  //   } else {
+  //     setIsLoggedIn(false); // User is logged out
+  //   }
+  // }, []);
   useEffect(() => {
-    // Check if the user is logged in by looking for userData in localStorage
-    const userData = JSON.parse(localStorage.getItem('userData'));
-    if (userData && userData.userId) {
-      setIsLoggedIn(true);  // User is logged in
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+      setIsLoggedIn(true); // If userData exists, user is logged in
     } else {
-      setIsLoggedIn(false); // User is logged out
+      setIsLoggedIn(false); // Otherwise, user is not logged in
     }
-  }, []);
+  }, []); // Run once when the component mounts
 
-  return (
-    <div>
-      {/* Always show the router */}
-      <RouterProvider router={router} />
-
-      {/* Conditionally render updaters only when the user is logged in */}
-      {isLoggedIn && (
-        <>
-          <LocationUpdater />
-          <ReportsToVerifyUpdater />
-        </>
-      )}
-    </div>
-  );
-  
-  // version 1: בלי ההתנייה 
-  // return ( 
+  // return (
   //   <div>
+  //     {/* Always show the router */}
   //     <RouterProvider router={router} />
-  //     <LocationUpdater />
-  //     <ReportsToVerifyUpdater />
+  //     {console.log('Is Logged In:', isLoggedIn)}
+
+  //     {/* Conditionally render updaters only when the user is logged in */}
+  //     {isLoggedIn && (
+  //       <>
+  //         <LocationUpdater />
+  //         <ReportsToVerifyUpdater />
+  //       </>
+  //     )}
   //   </div>
   // );
+  
+  // version 1: בלי ההתנייה 
+  return ( 
+    <div>
+      <RouterProvider router={router} />
+      <LocationUpdater />
+      <ReportsToVerifyUpdater />
+    </div>
+  );
 
 
   // version 2: עם התנייה (לא עובד)

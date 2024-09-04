@@ -6,8 +6,15 @@ const ReportsToVerifyUpdater = () => {
 
 
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
-  const userID = userData.userId;
-  console.log("userID=" + userID);
+  let userID; // = userData.userId;
+  if(!userData){
+    userID = 0;
+  } else{
+    userID = userData.userId;
+  }
+  console.log("userID = " + userID)
+
+
 
   const [reportToVerify, setReportToVerify] = useState(null); // State to track the report that needs to be verified
   //const [pendingReportsList, setPendingReportsList] = useState([]); 
@@ -54,7 +61,7 @@ const ReportsToVerifyUpdater = () => {
       } catch (error) {
         console.error("Error fetching reports:", error);
       }
-    }, 20000); // Check every 1 minute
+    }, 20000); // Check every 20 seconds
 
     return () => clearInterval(intervalId); // Cleanup the interval on component unmount
   }, [userID]);

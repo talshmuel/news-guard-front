@@ -2,14 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import './PresentWindowToVerifyReport.css';
 
 
-
-
 function PresentWindowToVerifyReport({report}) {
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
   const userID = userData.userId;
   console.log("user id=" + userID)
 
-  const [isVisible, setIsVisible] = useState(true); // Local state to control visibility
+  // const [isVisible, setIsVisible] = useState(true); // Local state to control visibility
 
   console.log("report to show: " + JSON.stringify(report));
   
@@ -68,12 +66,13 @@ function PresentWindowToVerifyReport({report}) {
         });
 
       if(response.ok){
-        setIsVisible(false); // Hide the window after the request is successful
+        console.log("Verification updated successfully");
+        //setIsVisible(false); // Hide the window after the request is successful
         // return response.text("setIsVisible=" + isVisible);
       }
       else
       {
-        console.log("error")
+        console.log("Error updating verification");
         throw new Error("Failed to update guard verification");
       }
     } catch (error){
@@ -87,19 +86,19 @@ function PresentWindowToVerifyReport({report}) {
   const handleApprovalClick = (reportId) => {
     console.log("Approved report ID: ", reportId);
     sendVerificationRequest(reportId, 1); // 1 for Approval
-    setIsVisible(true);
+    // setIsVisible(true);
   };
 
   const handleDenyClick = (reportId) => {
     console.log("Denied report ID: ", reportId);
     sendVerificationRequest(reportId, 2); // 2 for Denial
-    setIsVisible(true);
+    // setIsVisible(true);
   };
 
   const handleDontKnowClick = (reportId) => {
     console.log("Don't know report ID: ", reportId);
     sendVerificationRequest(reportId, 3); // 3 for Don't Know
-    setIsVisible(true);
+    // setIsVisible(true);
   };
 
   // const handleReplyLaterClick = (reportId) => {
@@ -108,69 +107,68 @@ function PresentWindowToVerifyReport({report}) {
   // };
 
   // Don't render the window if it's not visible
-  if (!isVisible) {
-    return null;
-  } else {
+  // if (!isVisible) {
+  //   return null;
+  // }
 
-    return (
-      <div className="present-report-container">
-        
-        {/* <div className="present-report-header"> */}
-          {/* <p className="present-report-details"><strong>Reporter: </strong>{report.anonymous ? 'Anonymous' : report.reporterFullName}</p> */}
-          {/* <p className="present-report-details">⭐ Report Reliability: {report.reliabilityRate} ⭐</p> */}
-          {/* <p className="present-report-details">Location: {report.location.x}, {report.location.y}</p> */}
-          {/* <p className="present-report-details">{new Date(report.timeReported).toLocaleString()}</p> */}
-        {/* </div> */}
-  
-        {/* <div className="present-report-header">
-          <div className="present-report-details-left">
-            <strong>Reporter: </strong>{report.anonymous ? 'Anonymous' : report.reporterFullName}
-          </div>
-          <div className="present-report-details-center">
-            ⭐ Report Reliability: {report.reliabilityRate} ⭐
-          </div>
-          <div className="present-report-details-right">
-            {new Date(report.timeReported).toLocaleString()}
-          </div>
-        </div> */}
-  
-        <div className="present-report-header">
-          <div className="present-report-section present-report-details-left">
-            <span className="present-report-label">Reporter</span>
-            <span className="present-report-value">{report.anonymous ? 'Anonymous' : report.reporterFullName}</span>
-          </div>
-          <div className="present-report-section present-report-details-center">
-            <span className="present-report-label">Reliability</span>
-            <span className="present-report-value">{report.reliabilityRate}</span>
-          </div>
-          <div className="present-report-section present-report-details-right">
-            <span className="present-report-label">Time</span>
-            <span className="present-report-value">{new Date(report.timeReported).toLocaleString()}</span>
-          </div>
+  return (
+    <div className="present-report-container">
+      
+      {/* <div className="present-report-header"> */}
+        {/* <p className="present-report-details"><strong>Reporter: </strong>{report.anonymous ? 'Anonymous' : report.reporterFullName}</p> */}
+        {/* <p className="present-report-details">⭐ Report Reliability: {report.reliabilityRate} ⭐</p> */}
+        {/* <p className="present-report-details">Location: {report.location.x}, {report.location.y}</p> */}
+        {/* <p className="present-report-details">{new Date(report.timeReported).toLocaleString()}</p> */}
+      {/* </div> */}
+
+      {/* <div className="present-report-header">
+        <div className="present-report-details-left">
+          <strong>Reporter: </strong>{report.anonymous ? 'Anonymous' : report.reporterFullName}
         </div>
-  
-        <div>
-          {report.imageURL ? (
-            <img
-              className="present-report-img"
-              src={report.imageURL}
-              alt="Report"
-              style={{ maxWidth: '100%', height: 'auto' }}
-            />
-          ) : null}
+        <div className="present-report-details-center">
+          ⭐ Report Reliability: {report.reliabilityRate} ⭐
         </div>
-  
-        <p className="present-report-txt">{report.text}</p>
-  
-        <div className="present-report-buttons">
-          <button className="present-approve-button" onClick={() => handleApprovalClick(report.reportID)}>Approve</button>
-          <button className="present-deny-button" onClick={() => handleDenyClick(report.reportID)}>Deny</button>
-          <button className="present-dont-know-button" onClick={() => handleDontKnowClick(report.reportID)}>Don't Know</button>
-          {/* <button className="present-later-button" onClick={() => handleReplyLaterClick(report.reportID)}>Reply Later</button> */}
+        <div className="present-report-details-right">
+          {new Date(report.timeReported).toLocaleString()}
+        </div>
+      </div> */}
+
+      <div className="present-report-header">
+        <div className="present-report-section present-report-details-left">
+          <span className="present-report-label">Reporter</span>
+          <span className="present-report-value">{report.anonymous ? 'Anonymous' : report.reporterFullName}</span>
+        </div>
+        <div className="present-report-section present-report-details-center">
+          <span className="present-report-label">Reliability</span>
+          <span className="present-report-value">{report.reliabilityRate}</span>
+        </div>
+        <div className="present-report-section present-report-details-right">
+          <span className="present-report-label">Time</span>
+          <span className="present-report-value">{new Date(report.timeReported).toLocaleString()}</span>
         </div>
       </div>
-    );
-  }
+
+      <div>
+        {report.imageURL ? (
+          <img
+            className="present-report-img"
+            src={report.imageURL}
+            alt="Report"
+            style={{ maxWidth: '100%', height: 'auto' }}
+          />
+        ) : null}
+      </div>
+
+      <p className="present-report-txt">{report.text}</p>
+
+      <div className="present-report-buttons">
+        <button className="present-approve-button" onClick={() => handleApprovalClick(report.reportID)}>Approve</button>
+        <button className="present-deny-button" onClick={() => handleDenyClick(report.reportID)}>Deny</button>
+        <button className="present-dont-know-button" onClick={() => handleDontKnowClick(report.reportID)}>Don't Know</button>
+        {/* <button className="present-later-button" onClick={() => handleReplyLaterClick(report.reportID)}>Reply Later</button> */}
+      </div>
+    </div>
+  );
 
 }
 
