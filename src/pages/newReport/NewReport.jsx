@@ -6,27 +6,18 @@ import React, { useState } from "react";
 
 
 function NewReportPage(){
-    const [anonymousReport, setAnonymousReport] = useState(false); // anonymousReport : false
+    const [anonymousReport, setAnonymousReport] = useState(false);
     const [imageURL, setImageURL] = useState(''); 
     const [selectedImage, setSelectedImage] = useState(null);
     const [latitude, setLatitude] = useState(''); // location: {x: 0, y: 0}
     const [longitude, setLongitude] = useState('');
     const [text, setText] = useState('');
     const [dateTime] = useState(new Date()); // Current datetime
-    // const [dateTime, setDateTime] = useState(''); // Current datetime
-
     
     const navigate = useNavigate();
     
     const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve user ID from local storage
     const reporterID = userData ? userData.userId : null;
-
-    // const { userData2 } = useContext(UserContext); // new 3/9 14:15
-    // const reporterID = userData2 ? userData.userId : null;
-    // const userID = userData2.userId; // new 3/9 14:15
-    // console.log("user id = " + userID) 
-
-  
 
     const handleImageUpload = (e) => {
       const file = e.target.files[0];
@@ -65,15 +56,15 @@ function NewReportPage(){
 
 
   const handleLocationAndSubmit = (e) => {
+    console.log("!@#$% " + anonymousReport)
     e.preventDefault();
-  
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
           //setLatitude(latitude);
           //setLongitude(longitude);
-          handleSubmit(e, latitude, longitude);
+          handleSubmit(e, latitude, longitude, anonymousReport);
         },
         (error) => {
           console.error("Error getting location", error);
@@ -87,54 +78,29 @@ function NewReportPage(){
   };
 
 
-  const handleSubmit = async (e, lat, long) => {
+  const handleSubmit = async (e, lat, long, anon) => {
         e.preventDefault();
         if (!reporterID) {
           alert('User not logged in. Please log in to submit a report.');
           return;
-        } else {
-            //console.log('User is logged in! :)))');
-        }
-        let imageUrl = '';
-        if (selectedImage) {
-            imageUrl = await uploadImage(selectedImage);
-            if (!imageUrl) return; // Abort if image upload fails
         }
 
-        // console.log("NEW REPORT: new Date(): " + new Date())
-        // console.log("NEW REPORT: month: " + dateTime.getMonth)
-        // console.log("NEW REPORT: year: " + dateTime.getFullYear)
-        // console.log("NEW REPORT: hours: " + dateTime.getHours)
-        // console.log("NEW REPORT: minutes: " + dateTime.getMinutes)
-        // console.log("NEW REPORT: seconds" + dateTime.getSeconds)
-        // const now = new Date();
-        // const day = String(now.getDate()).padStart(2, '0'); // Add leading 0 if necessary
-        // const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so add 1
-        // const year = now.getFullYear();
-        // const hours = String(now.getHours()).padStart(2, '0'); // 24-hour format
-        // const minutes = String(now.getMinutes()).padStart(2, '0');
-        // const formattedDate = `${day}/${month}/${year} ${hours}:${minutes}`;
-        // console.log("NEW REPORT: " + formattedDate);
-        
+        let imageUrl = '';
+        if (selectedImage) {
+          imageUrl = await uploadImage(selectedImage);
+          if (!imageUrl) return; // Abort if image upload fails
+        }
+
         const reportData = {
           text,
           imageURL: imageUrl,
           reporterID,
-          anonymousReport,
-          // dateTime: new Date(),
+          anonymousReport: anon,
           dateTime: new Date().toISOString(),
-          // dateTime: formattedDate,
-          // timeReported: formattedDate,
-          // dateTime: new LocalDateTime().toISOString(),
-          // dateTime: "iftach ramon hamelech",
-          // dateTime: formatDateToISOWithoutMilliseconds(new Date()),
           latitude: lat,
           longitude: long,
         };
-        // console.log("Sending reportData:", reportData);
 
-        
-    
         try {
           const response = await fetch('http://localhost:8080/report/add-new-report', {
             method: 'POST',
@@ -145,22 +111,23 @@ function NewReportPage(){
             body: JSON.stringify(reportData),
           });
 
-        // Check if the response is JSON
-        let responseBody;
-        const contentType = response.headers.get('Content-Type');
-        if (contentType && contentType.includes('application/json'))
-        {
+          // Check if the response is JSON
+          let responseBody;
+          const contentType = response.headers.get('Content-Type');
+          if (contentType && contentType.includes('application/json'))
+          {
             responseBody = await response.json();
-        } else {
+            console.log("responseBody: " + responseBody)
+          } else {
             responseBody = await response.text();
-        }
+          }
+          console.log("Response received:", responseBody); // Log the response
 
-        if (response.ok) {
-            //console.log('NEW REPORT: Report successful:' + responseBody + "time: " + dateTime);
+          if (response.ok) {
+            console.log('Report successfully submitted:', responseBody);
             navigate('/home');
           } else {
-            //console.log('New Report: Report failed');
-            console.error('New Report: Report failed:', responseBody);
+            console.error('Failed to submit report:', responseBody);
             if (response.status === 401) { // Unauthorized
               alert('401 Unauthorized');
             } else if (response.status === 404) { // Not Found
@@ -172,8 +139,7 @@ function NewReportPage(){
             }
           }
         } catch (error) {
-          console.error('New Report: Error occurred during posting:', error);
-          //console.log("New Report: REPORT ERROR!");
+          console.error('Error during report submission:', error);
           alert('An error occurred during posting. Please try again.');
         }
       };
@@ -250,7 +216,7 @@ function NewReportPage(){
               className="new-report-anon"
               type="checkbox"
               checked={anonymousReport}
-              onChange={() => setIsAnonymousReport(!anonymousReport)}
+              onChange={() => setAnonymousReport(!anonymousReport)}
               />
             Submit Anonymously
           </label>
@@ -262,19 +228,22 @@ function NewReportPage(){
           <button type="button" className="new-report-cancel-button" onClick={handleCancel}>Cancel</button>
         </div>
 
-         {/* Submit and Cancel Buttons */}
-         {/* <div className="new-report-button-container"> */}
-            {/* <button type="submit" className="new-report-submit-button">Submit</button> */}
-            {/* <button type="submit" className="new-report-submit-button" onSubmit={handleLocationAndSubmit}>Submit</button> */}
-            {/* <button type="button" className="new-report-cancel-button" onClick={handleCancel}>Cancel</button> */}
-         {/* </div> */}
-
         </form>
         </div>
       );
 }
 
 export default NewReportPage;
+
+
+
+
+
+
+
+
+
+
 
 //const [dateTime] = useState(new Date().toISOString()); // Current datetime
 //const [dateTime] = useState(new Date().toLocaleString('en-US', { hour12: false })); // Local date and time

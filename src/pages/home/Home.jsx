@@ -30,7 +30,7 @@ function HomePage(){
   const navigate = useNavigate(); // Initialize the useNavigate hook
 
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
-  console.log('user id: ', userData.userId);
+  // console.log('user id: ', userData.userId);
 
   const [reports, setReports] = useState([]);
   const [error, setError] = useState(null);
@@ -71,8 +71,8 @@ function HomePage(){
         if (response.ok)
         {
           const data = await response.json();
-          //console.log('Fetched reports data:', data);
           setReports(data);
+          console.log('Fetched reports:', data);
         }
         else
         {

@@ -6,31 +6,27 @@ import logo from '../../../public/logo.jpg';
 
 function Report({ report }) {
   const {
-    reportID = 0, // = 'Unknown',
+    reportID = 0,
     text,
     imageURL,
     // IDOfUsersWhoLiked = [],
     idofUsersWhoLiked = [],
     countUsersWhoLiked, 
-    comments: initialComments = [], // comments = [], 
+    comments: initialComments = [],
     reliabilityRate = 0,
     reporterID = 'Unknown',
-    reporterFullName, // = 'Unknown',
-    anonymousReport = false, // = false;
+    reporterFullName,
+    anonymousReport, // = false,
     location = 'Unknown', 
     timeReported, // = new Date().toISOString(), // Default to the current time
-    //guardsID = [],
   } = report;
-  
-  // console.log(report)
+
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
-  // console.log('REPORT: user id: ' + userData.userId + ' , username: ' + userData.userFullName);
 
   // State for likes and comments
   const [areCommentsVisible, setAreCommentsVisible] = useState(false);
   const [newComment, setNewComment] = useState('');
   const [comments, setComments] = useState(initialComments);
-  //const[likes, setLikes] = useState(initialIDOfUsersWhoLiked);
   const [isLiked, setIsLiked] = useState(idofUsersWhoLiked.includes(userData.userId));
   const [likesNumber, setLikesNumber] = useState(countUsersWhoLiked);
 
@@ -40,20 +36,17 @@ function Report({ report }) {
 
   const handleLikeClick = async () => {
     try {
-      //console.log("GoN")
       const response = await fetch(`http://localhost:8080/report/like-or-unlike?reportID=${report.reportID}&userID=${userData.userId}`, {
         method: 'PUT',
       });
 
       if (response.ok) {
         const result = await response.text();
-        //console.log("REPORT: like: " + result);
         // Toggle the like (increment or decrement)
         setLikesNumber((prevLikes) => prevLikes + (isLiked ? -1 : 1));
         setIsLiked(!isLiked); // Toggle the liked status
       }
     } catch (error) {
-      //console.log("REPORT: like not ok")
       console.error('Error while liking/unliking the report:', error);
     }
   };
@@ -79,7 +72,6 @@ function Report({ report }) {
 
       if (response.ok) {
         const result = await response.text();
-        //console.log("REPORT: Comment added successfully: ", result);
         // Add the new comment to the list of comments
         setComments([...comments, 
           { text: newComment, commenterFullName: userData.userFullName}
@@ -117,28 +109,6 @@ function Report({ report }) {
   };
 
   const renderStars = () => {
-    // if (reliabilityRate === -1) {
-    //   return (
-    //     <>
-    //       <p>The report is still in the calculating process</p>
-    //       {Array.from({ length: 5 }, (_, i) => (
-    //         <FaRegStar key={i + 1} />
-    //       ))}
-    //     </>
-    //   );
-    // }
-    // if (reliabilityRate === -1) {
-    //   return (
-    //     <div>
-    //       <span>The report is still in the calculating process</span>
-    //       <div>
-    //         {Array.from({ length: 5 }, (_, i) => (
-    //           <FaRegStar key={i + 1} />
-    //         ))}
-    //       </div>
-    //     </div>
-    //   );
-    // }
     if (reliabilityRate === -1) {
       return (
         <div>
@@ -159,6 +129,9 @@ function Report({ report }) {
     }
     return stars;
   };
+
+  // console.log(text + ": " + anonymousReport)
+  // console.log(text + "!!!!!!!!: " + report.isAnonymousReport)
 
 
   return (
@@ -192,12 +165,6 @@ function Report({ report }) {
       <p className="report-content">{text}</p>
 
       <div className="report-footer">
-      {/* <button className="report-like-button" onClick={handleLikeClick}> */}
-          {/* {isLiked ? 'Unlike' : 'Like'} */}
-          {/* {IDOfUsersWhoLiked ? 'Unlike' : 'Like'} */}
-        {/* </button> */}
-        {/* <span className="report-like-label">Likes: {likesNumber}</span> */}
-        {/* <span className="report-comment-section">Likes: {report.IDOfUsersWhoLiked}</span> */}
 
         {/* Left side: Like button and number of likes */}
         <div className="report-left">
@@ -208,22 +175,6 @@ function Report({ report }) {
           <span className="report-like-label">{likesNumber}</span>
         </div>
         
-
-        {/* <span className="report-comment-label">Comments: {report.comments.length}</span> */}
-        {/* <span className="report-comment-section">Comments: {comments.length}</span>
-        <input
-          type="text"
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          placeholder="Add a comment"
-        />
-        <button onClick={handleCommentSubmit}>Submit</button>
-
-        <ul className="comment-list">
-          {comments.map((comment, index) => (
-            <li key={index}>{comment.text}</li>
-          ))}
-        </ul> */}
 
 
         <div className="report-right">
@@ -259,6 +210,18 @@ function Report({ report }) {
 }
 
 export default Report;
+
+
+
+
+
+
+
+
+
+
+
+
 
         {/* Modal for comments */}
         {/* {areCommentsVisible && (

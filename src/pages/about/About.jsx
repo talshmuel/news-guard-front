@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 function AboutPage(){
     const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
-    console.log('user id: ', userData.userId);
+    // console.log('user id: ', userData.userId);
 
     const handleLogout = () => {
         // Clear user data from localStorage

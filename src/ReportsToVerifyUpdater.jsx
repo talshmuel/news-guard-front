@@ -4,24 +4,24 @@ import PresentWindowToVerifyReport from "./PresentWindowToVerifyReport";
 const ReportsToVerifyUpdater = () => {
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
   let userID = userData ? userData.userId : 1;
-  console.log("user id = " + userID)
+  // console.log("user id = " + userID)
 
 
   const [reportToVerify, setReportToVerify] = useState(null); // State to track the report that needs to be verified
   
   useEffect(() => {
     const intervalId = setInterval(async () => {  // Run this effect on an interval to check for new reports periodically
-      console.log("before try: Fetching reports to verify...");
+      // console.log("before try: Fetching reports to verify...");
       // if(userID !== 1){
         try {
           
-          console.log("in get reportsss")
+          // console.log("in get reportsss")
           const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
           let userID = userData ? userData.userId : 1;
-          console.log("$user id = " + userID)
+          // console.log("$user id = " + userID)
           if(userID !== 1){
           const response = await fetch(`http://localhost:8080/verification/get-reports-that-guard-need-to-verify?guardID=${userID}`);
-          console.log('Response status:', response.status);
+          // console.log('Response status:', response.status);
 
           if (response.ok)
           {
@@ -31,22 +31,22 @@ const ReportsToVerifyUpdater = () => {
 
             if (dataFromServerArray.length > 0) // meaning we did get soemthing from the server.
             {
-              console.log("dataFromServerArray.length > 0");
+              // console.log("dataFromServerArray.length > 0");
               dataFromServerArray.forEach((element, index) => { // prints the array the server gave me
-                console.log(`Element ${index}:`, element);
+                // console.log(`Element ${index}:`, element);
               });
               setReportToVerify(dataFromServerArray[0]); // put the first element to display
-              console.log("New report to verify: ", dataFromServerArray[0]);
+              // console.log("New report to verify: ", dataFromServerArray[0]);
             }
             else // meaning we didnt get anything from the server
             {
-              console.log("dataFromServerArray = 0");
+              // console.log("dataFromServerArray = 0");
               setReportToVerify(null); // No reports to verify
             }
           }
           else
           {
-            console.log("response not ok")
+            // console.log("response not ok")
             return;
           }
         }
@@ -62,7 +62,7 @@ const ReportsToVerifyUpdater = () => {
 
   // Function to close the window
   const handleCloseWindow = () => {
-    console.log("handleCloseWindow");
+    // console.log("handleCloseWindow");
     setReportToVerify(null);
   };
 

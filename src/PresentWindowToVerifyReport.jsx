@@ -5,9 +5,9 @@ import './PresentWindowToVerifyReport.css';
 function PresentWindowToVerifyReport({report, onClose}) {
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
   const userID = userData.userId;
-  console.log("user id = " + userID)
+  // console.log("user id = " + userID)
 
-  console.log("report to show: " + JSON.stringify(report));
+  // console.log("report to show: " + JSON.stringify(report));
   
   // console.log("reportID: " + report.reportID)
   // console.log("text: " + report.text)
@@ -52,10 +52,10 @@ function PresentWindowToVerifyReport({report, onClose}) {
   // };
 
   const sendVerificationRequest = async (reportId, verification) => {
-    console.log("sendVerificationRequest")
+    // console.log("sendVerificationRequest")
     try {
-      console.log("entering try, verification: " + verification)
-      console.log("reportID=" + reportId + " userID=" + userID + " verification=", verification)
+      // console.log("entering try, verification: " + verification)
+      // console.log("reportID=" + reportId + " userID=" + userID + " verification=", verification)
       const response = await fetch(`http://localhost:8080/verification/update-guard-verification?reportID=${reportId}&guardID=${userID}&verification=${verification}`,
         {
         method: 'PUT',
@@ -65,9 +65,9 @@ function PresentWindowToVerifyReport({report, onClose}) {
         });
 
       if(response.ok){
-        console.log("Verification updated successfully");
+        // console.log("Verification updated successfully");
         onClose();
-        console.log("onClose()")
+        // console.log("onClose()")
         //setIsVisible(false); // Hide the window after the request is successful
         // return response.text("setIsVisible=" + isVisible);
       }
@@ -86,19 +86,19 @@ function PresentWindowToVerifyReport({report, onClose}) {
 
   // Handlers for buttons
   const handleApprovalClick = (reportId) => {
-    console.log("Approved report ID: ", reportId);
+    // console.log("Approved report ID: ", reportId);
     sendVerificationRequest(reportId, 1); // 1 for Approval
     // setIsVisible(true);
   };
 
   const handleDenyClick = (reportId) => {
-    console.log("Denied report ID: ", reportId);
+    // console.log("Denied report ID: ", reportId);
     sendVerificationRequest(reportId, 2); // 2 for Denial
     // setIsVisible(true);
   };
 
   const handleDontKnowClick = (reportId) => {
-    console.log("Don't know report ID: ", reportId);
+    // console.log("Don't know report ID: ", reportId);
     sendVerificationRequest(reportId, 3); // 3 for Don't Know
     // setIsVisible(true);
   };
