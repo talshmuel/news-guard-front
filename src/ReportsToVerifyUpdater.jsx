@@ -12,45 +12,49 @@ const ReportsToVerifyUpdater = () => {
   useEffect(() => {
     const intervalId = setInterval(async () => {  // Run this effect on an interval to check for new reports periodically
       console.log("before try: Fetching reports to verify...");
-      if(userID !== 1){
-      try {
-        const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
-        let userID = userData ? userData.userId : 1;
-        console.log("$user id = " + userID)
-        const response = await fetch(`http://localhost:8080/verification/get-reports-that-guard-need-to-verify?guardID=${userID}`);
-        console.log('Response status:', response.status);
+      // if(userID !== 1){
+        try {
+          
+          console.log("in get reportsss")
+          const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
+          let userID = userData ? userData.userId : 1;
+          console.log("$user id = " + userID)
+          if(userID !== 1){
+          const response = await fetch(`http://localhost:8080/verification/get-reports-that-guard-need-to-verify?guardID=${userID}`);
+          console.log('Response status:', response.status);
 
-        if (response.ok)
-        {
-          // console.log("ok")
-          const data = await response.json(); // data the server gave me
-          let dataFromServerArray = Object.values(data); // make it an array
-
-          if (dataFromServerArray.length > 0) // meaning we did get soemthing from the server.
+          if (response.ok)
           {
-            console.log("dataFromServerArray.length > 0");
-            dataFromServerArray.forEach((element, index) => { // prints the array the server gave me
-              console.log(`Element ${index}:`, element);
-            });
-            setReportToVerify(dataFromServerArray[0]); // put the first element to display
-            console.log("New report to verify: ", dataFromServerArray[0]);
+            // console.log("ok")
+            const data = await response.json(); // data the server gave me
+            let dataFromServerArray = Object.values(data); // make it an array
+
+            if (dataFromServerArray.length > 0) // meaning we did get soemthing from the server.
+            {
+              console.log("dataFromServerArray.length > 0");
+              dataFromServerArray.forEach((element, index) => { // prints the array the server gave me
+                console.log(`Element ${index}:`, element);
+              });
+              setReportToVerify(dataFromServerArray[0]); // put the first element to display
+              console.log("New report to verify: ", dataFromServerArray[0]);
+            }
+            else // meaning we didnt get anything from the server
+            {
+              console.log("dataFromServerArray = 0");
+              setReportToVerify(null); // No reports to verify
+            }
           }
-          else // meaning we didnt get anything from the server
+          else
           {
-            console.log("dataFromServerArray = 0");
-            setReportToVerify(null); // No reports to verify
+            console.log("response not ok")
+            return;
           }
         }
-        else
-        {
-          console.log("response not ok")
-          return;
         }
-      } catch (error)
-      {
-        console.error("Error fetching reports:", error);
-      }
-    }
+        catch (error) {
+          console.error("Error fetching reports:", error);
+        }
+      // }
     }, 20000); // Check every 20 seconds
 
     return () => clearInterval(intervalId); // Cleanup the interval on component unmount

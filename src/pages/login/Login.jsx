@@ -108,10 +108,13 @@ function LoginPage() {
   );
 }
 
+export default LoginPage;
+
+
+
 {/* <div className="login-email-password-section"> </div> */}
 
 
-export default LoginPage;
 
 
 
