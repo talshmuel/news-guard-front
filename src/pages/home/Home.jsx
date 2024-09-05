@@ -136,6 +136,13 @@ function HomePage(){
                 </button>
               </Link>
             </li>
+            <li>
+              <Link to="/about">
+                <button className="home-button">
+                  <i className="fa-solid fa-info"></i>
+                </button>
+              </Link>
+            </li>
           </ul> {/*home-tab-list*/}
         </div> {/*home-center-links*/}
         <div className="home-logout-container">

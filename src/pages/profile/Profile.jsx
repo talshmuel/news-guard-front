@@ -98,6 +98,13 @@ function ProfilePage() {
                       </button>
                     </Link>
                   </li>
+                  <li>
+                    <Link to="/about">
+                      <button className="home-button">
+                        <i className="fa-solid fa-info"></i>
+                      </button>
+                    </Link>
+                  </li>
                 </ul>
               </div> {/* profile-center-links */}
               <div className="profile-logout-container">
@@ -168,6 +175,118 @@ function ProfilePage() {
       )}
   </div> /* profile-container */
   );
+
+
+
+//   return(
+//     <div className="home-container">
+
+//       <header className="home-navbar">
+//         <div className="home-logo-container">
+//           <img src={logo} alt="News Guard Logo" className="home-logo" />
+//           <p className="home-hello-user">Hello {userData.userFullName} </p>
+//         </div>
+//         <div className="home-center-links">
+//           <ul className="home-tab-list">
+//             <li>
+//               <Link to="/home">
+//                 <button className="home-button">
+//                   <i className="fas fa-home"></i>
+//                 </button>
+//               </Link>
+//             </li>
+//             <li>
+//               <Link to="/profile">
+//                 <button className="home-button">
+//                   <i className="fas fa-user"></i>
+//                 </button>
+//               </Link>
+//             </li>
+//             <li>
+//               <Link to="/new-report">
+//                 <button className="home-button">
+//                   <i className="fas fa-plus"></i>
+//                 </button>
+//               </Link>
+//             </li>
+//             <li>
+//               <Link to="/about">
+//                 <button className="home-button">
+//                   <i className="fa-solid fa-info"></i>
+//                 </button>
+//               </Link>
+//             </li>
+//           </ul> {/*home-tab-list*/}
+//         </div> {/*home-center-links*/}
+//         <div className="home-logout-container">
+//           {/* <Link to="/"> */}
+//             <button className="home-logout-button" onClick={handleLogout}>
+//               <i className="fas fa-sign-out-alt"></i>
+//             </button>
+//           {/* </Link> */}
+//         </div> {/*home-logout-container*/}
+//       </header> {/*home-navbar*/}
+    
+//     <div className="home-reports-section">
+        
+//       {/* Headline Section */}
+//       <div className="profile-headline-section">
+//         <h1 className="profile-headline">{profileData.firstName} {profileData.lastName}</h1>
+//           <img className="profile-details-img" src={profileData.imageURL} alt="Profile" />
+//           <div className="profile-details-row">
+//             <p className="profile-details-text">Country: {profileData.country}</p>
+//             <p className="profile-details-text">Reliability: {profileData.reliabilityRate}</p>
+//           </div>
+//       </div>
+
+//       {/* Tab Menu */}
+//       <div className="profile-tab-menu">
+//         <button
+//           className={`profile-tab ${activeTab === 'reports' ? 'active' : ''}`}
+//           onClick={() => handleTabClick('reports')}
+//         >
+//           Your Reports
+//         </button>
+//         <button
+//           className={`profile-tab ${activeTab === 'guarding' ? 'active' : ''}`}
+//           onClick={() => handleTabClick('guarding')}
+//         >
+//           Reports You're Guarding
+//         </button>
+//       </div>
+
+//       {/* Tab Content */}
+//       <div className="profile-tab-content">
+//             {activeTab === 'reports' && (
+//               <div className="profile-reports-section">
+//                 {Array.isArray(profileData.reports) && profileData.reports.length > 0 ? (
+//                   profileData.reports.map((report) => (
+//                     <Report key={report.id} report={report} />
+//                   ))
+//                 ) : (
+//                   <p className="profile-reports-section-txt">You have not submitted any reports.</p>
+//                 )}
+//               </div>
+//             )}
+//             {activeTab === 'guarding' && (
+//               <div className="profile-reports-section">
+//                 {Array.isArray(profileData.IDReportsThatTheUserIsAGuardOf) && profileData.IDReportsThatTheUserIsAGuardOf.length > 0 ? (
+//                   profileData.IDReportsThatTheUserIsAGuardOf.map((report) => (
+//                     <Report key={report.id} report={report} />
+//                   ))
+//                 ) : (
+//                   <p className="profile-reports-section-txt">You are not guarding any reports.</p>
+//                 )}
+//               </div>
+//             )}
+//           </div>
+
+
+
+//     </div>
+
+//   </div>
+// )
 }
 
 export default ProfilePage;

@@ -113,8 +113,18 @@ function PresentWindowToVerifyReport({report, onClose}) {
   //   return null;
   // }
 
+
+  
+
   return (
     <div className="present-report-container">
+
+      <div className="present-report-top-header">
+        <p className="present-report-top-header-text">At this moment,</p>
+        <p className="present-report-top-header-text">A new piece of news has been published near your location.</p>
+        <p className="present-report-top-header-text">Be a guard and help us clean the world from fake news!</p>
+        <p className="present-report-top-header-text">Please give your reponse: Approve, Deny or Don't Know</p>
+      </div>
 
       <div className="present-report-header">
         <div className="present-report-section present-report-details-left">
@@ -122,8 +132,8 @@ function PresentWindowToVerifyReport({report, onClose}) {
           <span className="present-report-value">{report.anonymous ? 'Anonymous' : report.reporterFullName}</span>
         </div>
         <div className="present-report-section present-report-details-center">
-          <span className="present-report-label">Reliability</span>
-          <span className="present-report-value">{report.reliabilityRate}</span>
+          <span className="present-report-label">Reporter's Reliability</span>
+          <span className="present-report-value">{report.reporterReliabilityRate}</span>
         </div>
         <div className="present-report-section present-report-details-right">
           <span className="present-report-label">Time</span>

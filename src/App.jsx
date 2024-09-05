@@ -10,8 +10,8 @@ import SignupPage from './pages/signup/Signup';
 import HomePage from './pages/home/Home';
 import NewReportPage from './pages/newReport/NewReport';
 import ProfilePage from './pages/profile/Profile';
+import AboutPage from './pages/about/About';
 import ReportsToVerifyUpdater from './ReportsToVerifyUpdater';
-//import NotificationsPage from './pages/notifications/Notifications';
 //import VerificationPage from './pages/verification/Verification';
 
 import { 
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
   { path: '/home', element: <HomePage />},
   { path: '/profile', element: <ProfilePage />},
   { path: '/new-report', element: <NewReportPage />},
-  //{ path: '/notifications', element: <NotificationsPage />},
+  { path: '/about', element: <AboutPage />},
   //{ path: '/verification', element: <VerificationPage />},
   //{ path: '/settings', element: <SettingsPage />}
 ]);
