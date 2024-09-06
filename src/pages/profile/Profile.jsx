@@ -159,8 +159,8 @@ function ProfilePage() {
             )}
             {activeTab === 'guarding' && (
               <div className="profile-reports-section">
-                {Array.isArray(profileData.IDReportsThatTheUserIsAGuardOf) && profileData.IDReportsThatTheUserIsAGuardOf.length > 0 ? (
-                  profileData.IDReportsThatTheUserIsAGuardOf.map((report) => (
+                {Array.isArray(profileData.reportsThatTheUserIsAGuardOf) && profileData.reportsThatTheUserIsAGuardOf.length > 0 ? (
+                  profileData.reportsThatTheUserIsAGuardOf.map((report) => (
                     <Report key={report.id} report={report} />
                   ))
                 ) : (

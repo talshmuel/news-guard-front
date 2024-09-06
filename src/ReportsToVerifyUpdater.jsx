@@ -55,7 +55,7 @@ const ReportsToVerifyUpdater = () => {
           console.error("Error fetching reports:", error);
         }
       // }
-    }, 20000); // Check every 20 seconds
+    }, 10000); // Check every 10 seconds
 
     return () => clearInterval(intervalId); // Cleanup the interval on component unmount
   }, [userID]);
