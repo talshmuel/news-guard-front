@@ -51,7 +51,7 @@ const LocationUpdater = () => {
         });
 
         const data = await response.text(); // Handles plain text response
-        // console.log("user " + userID + " is in location: " + latitude + " " + longitude)
+         console.log("user " + userID + " is in location: " + latitude + " " + longitude)
       } catch (error) {
         
         //console.log("Location: ERRORRRR")
@@ -68,7 +68,7 @@ const LocationUpdater = () => {
       let userID;
       if(userData){
         userID = userData.userId;
-        // console.log("userID = " + userID)
+         console.log("userID = " + userID)
       } else{
         userID = 1;
         // console.log("userID = " + userID)
@@ -76,32 +76,32 @@ const LocationUpdater = () => {
 
       // console.log("update location")
       if (navigator.geolocation) {
-        // console.log(" IN IF1")
+         console.log(" IN IF1")
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            // console.log(" IN IF2")
+             console.log(" IN IF2")
             const { latitude, longitude } = position.coords;
-            if (latitude !== lastLatitude || longitude !== lastLongitude) {
+            //if (latitude !== lastLatitude || longitude !== lastLongitude) {
               // console.log(" IN IF3")
               lastLatitude = latitude;
               lastLongitude = longitude;
               // console.log("lat and long: " + latitude + longitude)
               sendLocation(latitude, longitude);
-            }
+            //}
             // console.log("IM OUT")
           },
           (error) => {
-            // console.log("Error getting location")
+             console.log("Error getting location")
             console.error("Error getting location", error);
           }
         );
       } else {
         console.error("Geolocation is not supported by this browser.");
-        // console.log("location error: Geolocation is not supported by this browser.");
+         console.log("location error: Geolocation is not supported by this browser.");
       }
     };
 
-    updateLocation(); // Send location immediately when the component mounts
+    sendLocation(); // Send location immediately when the component mounts
     const intervalId = setInterval(updateLocation, 5000); // Send location every 5 seconds
 
     return () => clearInterval(intervalId); // Clean up the interval on component unmount
