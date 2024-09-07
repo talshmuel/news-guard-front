@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './NewReport.css';
 import logo from '../../../public/logo.jpg'
 import React, { useState } from "react";
-
+import NavigationBar from '../Navigation';
 
 
 function NewReportPage(){

@@ -9,38 +9,71 @@
   width: 700px;
 }
 
+/***************** HEADER- START *****************/
 .report-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; /* Distribute space evenly between items */
+  align-items: center; /* Vertically center items */
   /* font-size: 10px; */
   color: black;
   /* top right bottom left*/
   padding: 0px 0px 0px 0px; /* מבפנים */
   margin: 0px 0px 0px 0px; /* מבחוץ  */
+  /* flex-wrap: wrap; Allow wrapping if needed */
+  /*gap: 15px;  Adjust spacing between items */
 }
 
-.report-reporter-details{
-  color: black;
-  font-size: 17px;
+.report-header-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.report-reporter-details,
+.report-time-details {
+  margin: 0; /* מבחוץ  */
   text-transform: capitalize;
-  /* top right bottom left*/
-  padding: 0px 50px 0px 0px; /* מבפנים */
-  margin: 0px 0px 0px 0px; /* מבחוץ  */
+  /* font-size: 17px; */
+  color: black;
+  padding: 0; /* מבפנים */
+}
+.report-time-details {
+  font-size: 15px;
 }
 
-.report-reliability{
+.report-reliability {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+}
+
+.report-reliability-label {
+  font-weight: bold; /* Make the label bold */
+  margin-bottom: 5px; /* Space between label and stars */
+}
+.report-reliability-label1234{
+  /* display: block; */
+  font-weight: bold;
   color: black;
   font-size: 17px;
+  /* margin-bottom: 5px; */
 }
 
-.report-time-details{
-  color: black;
-  font-size: 14px;
-  /* top right bottom left*/
-  padding: 0px 0px 0px 50px; /* מבפנים */
-  margin: 0px 0px 0px 0px; /* מבחוץ  */
+.report-reliability-stars {
+  display: flex; /* Arrange stars horizontally */
 }
+.report-reliability-stars1234{
+  /* display: flex; */
+  align-items: center;
+}
+/***************** HEADER- END *****************/
+
+
+
+.report-italic{
+  font-style: italic !important;
+}
+
+
 
 .report-img{
   height: 500px;

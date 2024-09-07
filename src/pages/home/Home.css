@@ -46,20 +46,34 @@
   flex: 1; /* שם את הלוגו הכי בשמאל */
   display: flex;
   justify-content: flex-start;
+  align-items: center; /* שהכיתוב יהיה באמצע מבחינת גובה */
 }
 
 .home-logo{
+  margin-left: 10px;
+  /* margin-top: 1px;  */
+  /* margin-bottom: 1px; */
   width: 60px;
   height: 60px;
-  margin-left: 20px;
+  border-radius: 50%; /* circle */
+  margin-right: 5px; /* Space between logo and title */
   transition: box-shadow 0.4s ease, background-color 0.4s ease;
-  /*margin-top: 1px; 
-  margin-bottom: 1px;*/
 }
 .home-logo:hover{
   background-color: #1e1b59;
   box-shadow: 0 0 30px 10px #3f37b1; /* rgba(47, 0, 255, 0.6); */
   /* גורם ללוגו להיות זוהר מאחורה כשעוברים מעליו */
+}
+
+.home-news-guard-title{
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  color: white;
+  padding: 0px 10px;
+  font-weight: bold;
+  font-size: 20px; /* Make it bigger and bold */
+  margin-right: 0px; /* Space between title and username */
 }
 
 .home-hello-user{
@@ -88,7 +102,7 @@
   font-size: 20px;
   font-weight: bold;
   border-radius: 100px;
-  padding: 10px 20px;
+  padding: 10px 30px;
 }
 .home-button:hover {
   background-color: #218cff;

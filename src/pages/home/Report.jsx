@@ -6,19 +6,19 @@ import logo from '../../../public/logo.jpg';
 
 function Report({ report }) {
   const {
-    reportID = 0,
-    text,
-    imageURL,
-    // IDOfUsersWhoLiked = [],
-    idofUsersWhoLiked = [],
-    countUsersWhoLiked, 
-    comments: initialComments = [],
-    reliabilityRate = 0,
-    reporterID = 'Unknown',
-    reporterFullName,
-    anonymousReport, // = false,
-    location = 'Unknown', 
-    timeReported, // = new Date().toISOString(), // Default to the current time
+    reportID = 0, // reportID
+    text, // text
+    imageURL, // imageURL
+    idofUsersWhoLiked = [], // IDOfUsersWhoLiked
+    comments: initialComments = [], // comments
+    reliabilityRate = 0, // reliabilityRate
+    reporterID = 'Unknown', // reporterID
+    reporterFullName, // reporterFullName
+    anonymousReport, // anonymousReport
+    location = 'Unknown', // location
+    timeReported, // timeReported // = new Date().toISOString(), // Default to the current time
+    countUsersWhoLiked, // countUsersWhoLiked
+    reporterReliabilityRate,
   } = report;
 
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
@@ -108,21 +108,22 @@ function Report({ report }) {
     //e.target.src = 'path/to/placeholder-image.jpg'; // Replace with the path to a placeholder image
   };
 
+  
   const renderStars = () => {
     if (reliabilityRate === -1) {
       return (
         <div>
-          <span>The report is still in the calculating process</span>
-          <div>
-            {Array.from({ length: 5 }, (_, i) => (
-              <FaRegStar key={i + 1} />
-            ))}
-          </div>
+          <span className="report-italic" style={{ fontStyle: 'italic' }}>Reliability calculation in progress.</span>
         </div>
       );
     }
-
-
+    else if(reliabilityRate === -2){ // style={{ fontStyle: 'italic' }}
+      return (
+        <div>
+          <span className="report-italic" style={{ fontStyle: 'italic' }}>Not enough info for this report.</span>
+        </div>
+      );
+    }
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       stars.push(i <= reliabilityRate ? <FaStar key={i} /> : <FaRegStar key={i} />);
@@ -130,21 +131,75 @@ function Report({ report }) {
     return stars;
   };
 
-  // console.log(text + ": " + anonymousReport)
-  // console.log(text + "!!!!!!!!: " + report.isAnonymousReport)
+  const reporterStars = () => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(i <= reporterReliabilityRate ? <FaStar key={i} /> : <FaRegStar key={i} />);
+    }
+    return stars;
+  };
+
+
+  {/* <div className="reporter-reliability"><strong> Reporter Reliability:</strong>  {reporterStars()}</div> */}
+  {/* <div className="report-reliability">Report Reliability: {renderStars()}</div> */}
+
+  // <div className="report-header">
+
+  //       <p className="report-reporter-details"><strong>Reporter: </strong> {anonymousReport ? 'Anonymous' : reporterFullName}</p>
+
+  //       <div className="report-reliability2">
+  //         <span className="report-reliability-label2">Reporter Reliability:</span>
+  //         <div className="report-reliability-stars2">{reporterStars()}</div>
+  //       </div>
+
+  //       <div className="report-reliability2">
+  //         <span className="report-reliability-label2">Report Reliability:</span>
+  //         <div className="report-reliability-stars2">{renderStars()}</div>
+  //       </div>
+
+  //       <p className="report-time-details">{formatDateTime(timeReported)}</p>
+  //     </div>
 
 
   return (
     <div className="report-container">
-      <div className="report-header">
+      {/* <div className="report-header">
+
         <p className="report-reporter-details"><strong>Reporter: </strong> {anonymousReport ? 'Anonymous' : reporterFullName}</p>
-        <div className="report-reliability">Report Reliability: {renderStars()}</div>
-        {/* <p className="report-reliability">⭐ Report Reliability: {report.reliabilityRate} ⭐</p> */}
-        {/* <p className="report-reliability">Location: {report.location.x} , {report.location.y}</p> */}
-        {/* <p className="report-details"><strong>Reporter Reliability: </strong> {reliabilityRate.toFixed(1)} ⭐</p> */}
+
+        <div className="report-reliability2">
+          <span className="report-reliability-label2">Reporter Reliability:</span>
+          <div className="report-reliability-stars2">{reporterStars()}</div>
+        </div>
+
+        <div className="report-reliability2">
+          <span className="report-reliability-label2">Report Reliability:</span>
+          <div className="report-reliability-stars2">{renderStars()}</div>
+        </div>
+
         <p className="report-time-details">{formatDateTime(timeReported)}</p>
-        {/* <p className="report-time-details"><strong>Reported at: </strong> {formatDateTime(timeReported)}</p> */}
+      </div> */}
+
+    <div className="report-header">
+
+      <div className="report-header-item">  {/* reporter-details"> */}
+        <p className="report-reporter-details">
+          <strong>Reporter:</strong> {anonymousReport ? 'Anonymous' : reporterFullName}
+        </p>
+        <div className="report-reliability">
+          <span className="report-reliability-label"><strong>Reliability:</strong></span>
+          <div className="report-reliability-stars">{reporterStars()}</div>
+        </div>
       </div>
+
+      <div className="report-header-item">  {/* report-reliability"> */}
+        <span className="report-reliability-label"><strong>Report Reliability:</strong></span>
+        <div className="report-reliability-stars">{renderStars()}</div>
+      </div>
+
+      <p className="report-time-details">{formatDateTime(timeReported)}</p>
+    </div> {/* report-header */}
+
 
       {/* {report.imageURL && <img src={report.imageURL} alt="Image" />} */}
       {/* {report.imageURL && <img src={imageURL} alt="Image" />} */}

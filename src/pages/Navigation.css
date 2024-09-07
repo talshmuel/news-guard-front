@@ -1,0 +1,104 @@
+.home-navbar { /* התפריט למעלה*/
+    background-color: #383847;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center; /* שם באמצע מבחינת גובה */
+    position: fixed;  /* מדביק למעלה */
+    top: 0; /* מדביק למעלה */
+    width: 100%; /* שהכל יהיה מלא */
+    /*justify-content: center;  Center the content horizontally */
+    /* color: #fff; */
+    /* z-index: 1000; */
+    /*left: 0; כל אלו הורסים את התפריט למעלה לא לגעת בהם!!!
+    right: 0;
+    width: max-content;
+    height: max-content;*/
+  }
+  
+  .home-logo-container {
+    flex: 1; /* שם את הלוגו הכי בשמאל */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; /* שהכיתוב יהיה באמצע מבחינת גובה */
+  }
+  
+  .home-logo{
+    margin-left: 10px;
+    /* margin-top: 1px;  */
+    /* margin-bottom: 1px; */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* circle */
+    margin-right: 5px; /* Space between logo and title */
+    transition: box-shadow 0.4s ease, background-color 0.4s ease;
+  }
+  .home-logo:hover{
+    background-color: #1e1b59;
+    box-shadow: 0 0 30px 10px #3f37b1; /* rgba(47, 0, 255, 0.6); */
+    /* גורם ללוגו להיות זוהר מאחורה כשעוברים מעליו */
+  }
+  
+  .home-news-guard-title{
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    color: white;
+    padding: 0px 10px;
+    font-weight: bold;
+    font-size: 20px; /* Make it bigger and bold */
+    margin-right: 0px; /* Space between title and username */
+  }
+  
+  .home-hello-user{
+    color: white;
+    padding-left: 30px;
+  }
+  
+  .home-center-links {
+    flex: 2; /* Flex grows more to center it */
+    display: flex;
+    justify-content: center; /* Centers the nav items */
+  }
+  
+  .home-tab-list { /* הכפתורים בתפריט שיסודרו בשורה ולא בטור*/
+    list-style-type: none; /* מוריד את הבולטים */
+    padding: 0; /* Remove default padding */
+    display: flex; /* שם בשורה */
+    gap: 15px; /* הרווח בין כל כפתור */
+    margin: 0;
+  }
+  
+  .home-button {
+    background-color: #007bff;
+    color: white; /* צבע הפונט בכפתורים למעלה */
+    letter-spacing: 0.6px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 100px;
+    padding: 10px 30px;
+  }
+  .home-button:hover {
+    background-color: #218cff;
+    color: #f0f0f0;
+  }
+  
+  .home-logout-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Aligns the Log Out button on the right */
+  }
+  
+  .home-logout-button {
+    background-color: #1b1b1f;
+    color: white; /* צבע הפונט בכפתורים למעלה */
+    font-size: 20px;
+    border-radius: 100px;
+    padding: 10px 20px;
+    margin: 10px;
+    /* font-weight: bold; */
+    /* letter-spacing: 0.6px; */
+  }
+  .home-logout-button:hover {
+    background-color: #262630;
+    border-color: #000;
+  }

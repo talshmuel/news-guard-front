@@ -1,5 +1,3 @@
-/* About.css */
-
 .about-container {
   font-family: 'Roboto', sans-serif;
   display: flex;
@@ -44,8 +42,9 @@
   text-align: left;
   max-width: 750px;
   margin: 20px auto;
-  padding: 20px;
-  background: #f3e3e3; /* White background for better readability */
+  padding: 20px 50px;
+  background: white; 
+  /* background: #f3e3e3; Nitzan- i changed the color */ 
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
