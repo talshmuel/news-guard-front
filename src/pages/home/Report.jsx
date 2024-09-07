@@ -180,25 +180,50 @@ function Report({ report }) {
         <p className="report-time-details">{formatDateTime(timeReported)}</p>
       </div> */}
 
-    <div className="report-header">
-
-      <div className="report-header-item">  {/* reporter-details"> */}
+    {/* <div className="report-header">
+      <div className="report-header-item">
         <p className="report-reporter-details">
           <strong>Reporter:</strong> {anonymousReport ? 'Anonymous' : reporterFullName}
         </p>
         <div className="report-reliability">
-          <span className="report-reliability-label"><strong>Reliability:</strong></span>
-          <div className="report-reliability-stars">{reporterStars()}</div>
+          <span className="report-reliability-label"><strong>Reliability: {reporterStars()}</strong></span>
         </div>
       </div>
-
-      <div className="report-header-item">  {/* report-reliability"> */}
+      <div className="report-header-item">
         <span className="report-reliability-label"><strong>Report Reliability:</strong></span>
         <div className="report-reliability-stars">{renderStars()}</div>
       </div>
 
       <p className="report-time-details">{formatDateTime(timeReported)}</p>
-    </div> {/* report-header */}
+    </div> */}
+
+    <div className="report-header">
+      <div className="report-header-item">
+        <div className="report-reporter-info">
+          <p className="report-reporter-details">
+            {anonymousReport ? 'Anonymous' : reporterFullName} <i class="fa-solid fa-star"></i> {report.reporterReliabilityRate}
+            {/* <strong>Reporter:</strong> {anonymousReport ? 'Anonymous' : reporterFullName} */}
+          </p>
+          <div className="report-reliability">
+            <div className="report-reliability-stars">
+              {/* <span className="star-icon"><i class="fa-solid fa-star"></i></span> */}
+              {/* <span className="reliability-number">{report.reporterReliabilityRate}</span> */}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="report-header-item">
+        <span className="report-reliability-label"><strong>Report Reliability:</strong></span>
+        <div className="report-reliability-stars">{renderStars()}</div>
+      </div>
+
+      <p className="report-time-details">{formatDateTime(timeReported)}</p>
+    </div>
+
+
+
+
 
 
       {/* {report.imageURL && <img src={report.imageURL} alt="Image" />} */}

@@ -6,19 +6,19 @@
   background-color: #f9f9f9;
   /* background-color: rgb(118, 118, 255); */
   color: black;
-  width: 700px;
+  width: 800px;
 }
 
 /***************** HEADER- START *****************/
 .report-header {
   display: flex;
   justify-content: space-between; /* Distribute space evenly between items */
-  align-items: center; /* Vertically center items */
-  /* font-size: 10px; */
+  /* align-items: center; */
+  align-items: flex-start;
   color: black;
-  /* top right bottom left*/
-  padding: 0px 0px 0px 0px; /* מבפנים */
-  margin: 0px 0px 0px 0px; /* מבחוץ  */
+  padding: 0; /* מבפנים */
+  margin: 0; /* מבחוץ  */
+  /* font-size: 10px; */
   /* flex-wrap: wrap; Allow wrapping if needed */
   /*gap: 15px;  Adjust spacing between items */
 }
@@ -28,52 +28,63 @@
   flex-direction: column;
 }
 
-.report-reporter-details,
-.report-time-details {
-  margin: 0; /* מבחוץ  */
-  text-transform: capitalize;
-  /* font-size: 17px; */
-  color: black;
-  padding: 0; /* מבפנים */
+.report-reporter-info {
+  /* display: flex;
+  flex-direction: column; */
+  border: 1px solid #ccc; /* Light grey border around the section */
+  padding: 5px; /* Add some padding inside the border */
+  border-radius: 10px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background color */
 }
-.report-time-details {
-  font-size: 15px;
+
+.report-reporter-details {
+  text-transform: capitalize;
+  color: black;
+  padding: 0;
+  margin: 0;
 }
 
 .report-reliability {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  align-items: center; /* Center items horizontally */
+  align-items: flex-start; /* Align items to the start of the container */
+  margin-top: 5px; /* Space between name and reliability */
+}
+
+.report-reliability-stars {
+  display: flex; /* Arrange star and number horizontally */
+  align-items: center;
+}
+
+.star-icon {
+  font-size: 15px; /* Adjust size of the star icon */
+  margin-right: 5px; /* Space between star and number */
+  line-height: 1;
+}
+
+.reliability-number {
+  font-size: 17px; /* Adjust size of the reliability number */
 }
 
 .report-reliability-label {
   font-weight: bold; /* Make the label bold */
   margin-bottom: 5px; /* Space between label and stars */
-}
-.report-reliability-label1234{
-  /* display: block; */
-  font-weight: bold;
-  color: black;
   font-size: 17px;
-  /* margin-bottom: 5px; */
+
 }
 
-.report-reliability-stars {
-  display: flex; /* Arrange stars horizontally */
+
+.report-time-details {
+  margin: 0; /* מבחוץ  */
+  text-transform: capitalize;
+  font-size: 15px;
+  color: black;
+  padding: 0; /* מבפנים */
 }
-.report-reliability-stars1234{
-  /* display: flex; */
-  align-items: center;
-}
+
+
 /***************** HEADER- END *****************/
-
-
-
-.report-italic{
-  font-style: italic !important;
-}
-
-
 
 .report-img{
   height: 500px;
