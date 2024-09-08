@@ -158,8 +158,9 @@ function Report({ report }) {
       </div>
 
       <div className="report-header-item">
-        <span className="report-reliability-label"><strong>Report Reliability:</strong></span>
+      <span className="report-reliability-label"><strong>Report Reliability:</strong></span>
         <div className="report-reliability-stars">{renderStars()} {(reliabilityRate!==-1 && reliabilityRate!==-2) ? reliabilityRate : ""}</div>
+      </div>
       </div>
 
       <p className="report-time-details">{formatDateTime(timeReported)}</p>
