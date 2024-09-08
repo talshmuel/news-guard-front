@@ -7,14 +7,6 @@
   position: fixed;  /* מדביק למעלה */
   top: 0; /* מדביק למעלה */
   width: 100%; /* שהכל יהיה מלא */
-  /*justify-content: center;  Center the content horizontally */
-  /* color: #fff; */
-  /* z-index: 1000; */
-  /*******************/
-  /*left: 0; כל אלו הורסים את התפריט למעלה לא לגעת בהם!!!
-  right: 0;
-  width: max-content;
-  height: max-content;*/
 }
   
 .profile-logo-container {
@@ -28,8 +20,6 @@
   height: 60px;
   margin-left: 20px;
   transition: box-shadow 0.4s ease, background-color 0.4s ease;
-  /*margin-top: 1px; 
-  margin-bottom: 1px;*/
 }
 .profile-logo:hover{
   background-color: #1e1b59;
@@ -77,21 +67,11 @@
   font-size: 16px;
   border-radius: 100px;
   padding: 10px 20px;
-  /* font-weight: bold; */
-  /* letter-spacing: 0.6px; */
 }
 .profile-logout-button:hover {
   background-color: #262630;
   border-color: #000;
 }
-
-/* TOP NAVIGATION BAR */
-
-/* PROFILE CONTAINER */
-
-/* .ignore{
-  background-color: #218cff;
-} */
 
 .profile-container {
   display: flex;
@@ -105,30 +85,13 @@
   overflow: hidden; /* Ensures no unnecessary scroll on the container */ 
 }
 
-.profile-container2{ /* איפה שכתוב הפרטים של הבן אדם */
-  /* נותן לעשות סקרולר אם יש יותר מדי פוסטים */
-  /* overflow: scroll; */ /* לא לשים את זה זה סקרולר לא קשור */
-  /* border-radius: 30px; */
-  /* max-width: 100%; max-content; */
-  /* width: 100%; */
-  /* min-width: min-content;*/
-  /* margin: 0 auto; */
-  /* padding: 20px; */
-  /* color: white; */
-}
-
-/*****************************************************************/
 .profile-headline-section{
-  /* background-color: #db2d2d; */
   text-align: center;
   margin-bottom: 10px; /* המרחק מלמעלה */
   margin-top: 0px; /* המרחק בפנים */
   padding-top: 0px;
-  /* max-width: 90vw; */
   width: 100vw; /* Occupy 90% of the viewport width, leaving space on both sides */
-  /* background-color: #ffffff; */
   color: #f3f4f6;
-  
 }
 
 .profile-headline{
@@ -157,32 +120,22 @@
   margin-top: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
-  /* color: #000000; */
-  /* text-align: center; */
 }
 
 .profile-details-text{
   color: #f3f4f6;
   font-size: 17px;
   text-transform: capitalize;
-  /* margin: 0; */
-  /* padding: 0; */
   margin-bottom: 0px;
   margin-top: 0px;
   padding-top: 0px;
   padding-top: 0px;
-  /* margin: 0 10px; */
-  /* margin-bottom: 0px; */
-  /* padding: 5px; */
 }
 
 .profile-tab-menu{
-  /* display: flex; */
-  /* justify-content: center; */
   margin-bottom: 10px;
   margin-top: 0px;
   padding-top: 0px;
-  
 }
 
 .profile-tab{
@@ -192,7 +145,6 @@
   padding: 10px 20px;
   cursor: pointer;
   margin-right: 10px;
-  /* transition: background-color 0.3s ease; */
 }
 .profile-tab.active {
   background-color: #007bff;
@@ -209,30 +161,19 @@
   position: relative; /* Required for sticky header */
   padding: 0;
   margin: 0;
-  /* overflow-x: hidden; */
-  /* overflow-y: scroll; */
-  /* overflow: scroll; */
 }
 
-
-/*margin:  מבחוץ */
-/*padding:  מבפנים */ 
-/* NITZAN GON CHANGE */
 .profile-reports-section{ /*זה החלק הפנימי של הריפורטים*/
   flex-direction: column;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  /* padding: 10px; */
   height: 90%;
   max-width: 100%;
   max-height: 100%;
   width: auto; /* עושה שיהיה באמצע */
   overflow: scroll; /* פה צריך סקרולר */
   overflow-x: auto; /* זה ביטל את הסקרולר המיותר של הצדדים */
-  /* margin-bottom: 40px; */
-  /* margin-left: 10px; */
-  /* margin-right: 10px; */
 }
 
 .profile-reports-section-txt {
@@ -242,4 +183,3 @@
 .profile-loading{
   color: white;
 }
-

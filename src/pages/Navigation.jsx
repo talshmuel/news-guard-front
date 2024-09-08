@@ -5,11 +5,9 @@ import { useEffect, useState } from 'react';
 
 
 const handleLogout = () => {
-    localStorage.removeItem('userData'); // Clear user data from localStorage
-    window.location.href = '/'; // Redirect to login page
+  localStorage.removeItem('userData'); // Clear user data from localStorage
+  window.location.href = '/'; // Redirect to login page
 };
-
-
 
 function NavigationBar({userData}){
     return(

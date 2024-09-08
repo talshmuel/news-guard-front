@@ -4,7 +4,6 @@
   margin-bottom: 10px;
   border-radius: 10px;
   background-color: #f9f9f9;
-  /* background-color: rgb(118, 118, 255); */
   color: black;
   width: 800px;
 }
@@ -13,14 +12,10 @@
 .report-header {
   display: flex;
   justify-content: space-between; /* Distribute space evenly between items */
-  /* align-items: center; */
   align-items: flex-start;
   color: black;
   padding: 0; /* מבפנים */
   margin: 0; /* מבחוץ  */
-  /* font-size: 10px; */
-  /* flex-wrap: wrap; Allow wrapping if needed */
-  /*gap: 15px;  Adjust spacing between items */
 }
 
 .report-header-item {
@@ -29,8 +24,6 @@
 }
 
 .report-reporter-info {
-  /* display: flex;
-  flex-direction: column; */
   border: 1px solid #ccc; /* Light grey border around the section */
   padding: 5px; /* Add some padding inside the border */
   border-radius: 10px; /* Rounded corners */
@@ -68,13 +61,11 @@
 }
 
 .report-reliability-label {
-  /* font-weight: bold;  */
   align-items: center;
   margin-bottom: 5px; /* Space between label and stars */
   font-size: 17px;
 
 }
-
 
 .report-time-details {
   margin: 0; /* מבחוץ  */
@@ -83,8 +74,6 @@
   color: black;
   padding: 0; /* מבפנים */
 }
-
-
 /***************** HEADER- END *****************/
 
 .report-img{
@@ -113,8 +102,6 @@
 }
 
 .report-like-button {
-  /* background-color: rgb(136, 136, 255); */
-  /* background-color: #f3f4f6; */
   border-radius: 50px;
   border: none;
   color: #007bff;
@@ -126,8 +113,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .report-like-button:hover {
-  /* background-color: rgb(113, 113, 253); */
-  /* background-color: #258eff; */
   transform: scale(1.05); /* Slightly enlarge on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
@@ -153,12 +138,10 @@
   margin-right: 10px;
   display: flex;
   align-items: center;
-  /* background-color: green; */
 }
 
 .report-comment-submit{
   margin-right: 10px;
-  /* background-color: rgb(136, 136, 255); */
   background-color: #007bff;
   border-radius: 50px;
   border: none;
@@ -171,7 +154,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .report-comment-submit:hover {
-  /* background-color: rgb(113, 113, 253); */
   background-color: #258eff;
   transform: scale(1.05); /* Slightly enlarge on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
@@ -189,48 +171,21 @@ input[type="text"] {
   font-size: 15px;
 }
 
-/* .toggle-comments-button{
-  font-size: 12px;
-  background-color: #6c757d;
-  background-color: blue;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  margin-left: 10px;
-  transition: background-color 0.3s ease;
-}
-.toggle-comments-button:hover {
-  background-color: #5a6268;
-} */
-
 .toggle-comments-button {
   background-color: #f9f9f9;
   color: black;
-  /* border-radius: 5px; */
   padding: 10px 10px;
   font-size: 13px;
   letter-spacing: 0.7px;
   cursor: pointer;
-  /* transition: background-color 0.3s ease, transform 0.2s ease; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 .toggle-comments-button:hover {
   background-color: #e5e5e5;
   border: none;
-  /* transform: scale(1.05);  */
-  /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); */
 }
-/* .toggle-comments-button:active {
-  transform: scale(0.95);
-  border: white;
-} */
 
-/* Expandable comments section */
 .comments-section {
-  /* border-top: 1px solid #ddd; */
-  /* background-color: #f1f1f1; */
   padding: 0;
   margin-top: 0;
   border-radius: 5px;
@@ -251,137 +206,12 @@ input[type="text"] {
   padding-bottom: 5px;
   padding-left: 0px;
   padding-right: 0px;
-
   margin-top: 5px;
   margin-bottom: 5px;
   margin-right: 5px;
   margin-left: 5px;
-
   text-align: left;
   background-color: #f9f9f9;
   border-radius: 5px;
-  /* padding: 10px; */
-  /* margin-bottom: 10px; */
   border: 1px solid #ddd;
 }
-
-
-/* .comments-modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
-  z-index: 1000; 
-} */
-
-
-/* .comments-modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 400px;
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-} */
-
-/* .close-comments-modal {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #aaa;
-  transition: color 0.3s;
-}
-.close-comments-modal:hover {
-  color: #000;
-} */
-
-
-
-
-/* .comments-container{
-  margin-top: 10px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease-out;
-  width: 100%;
-  background-color: #f1f1f1;
-  padding: 0;
-  border-radius: 5px;
-}
-.comments-container.visible {
-  padding: 10px;
-  max-height: 300px;
-} */
-
-
-
-
-
-
-
-/* .report-comment-label22222{
-  margin-right: 10px;
-  font-size: 12px;
-}
-
-.comment-input2222{
-  width: 150px;
-  margin-right: 5px;
-  padding: 5px;
-}
-
-.submit-comment-button2222{
-  padding: 5px 10px;
-  font-size: 12px;
-}
-
-
-
-.comments-window2222{
-  margin-top: 10px;
-  background-color: #f1f1f1;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  max-height: 150px;
-  overflow-y: auto;
-}
-
-.comment-list2222{
-  list-style-type: none;
-  padding-left: 0;
-  background-color: #f9f9f9;
-} */
-
-
-
-
-
-
-
-/**/
-
-  /* .report-details{
-    padding: 10px;
-    height: 50px;
-    flex-direction: column;
-    border-radius: 30px;
-    margin-bottom: 10px;
-    color: black;
-  } */
-
-  /* .report-comment-label{
-    font-family: 'Ariel Narrow', sans-serif;
-    font-size: 12px;
-    background-color: yellow;
-  } */
-
-  

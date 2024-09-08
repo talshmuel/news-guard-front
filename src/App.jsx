@@ -12,7 +12,6 @@ import NewReportPage from './pages/newReport/NewReport';
 import ProfilePage from './pages/profile/Profile';
 import AboutPage from './pages/about/About';
 import ReportsToVerifyUpdater from './ReportsToVerifyUpdater';
-//import VerificationPage from './pages/verification/Verification';
 
 import { 
   createBrowserRouter, 
@@ -26,16 +25,7 @@ const router = createBrowserRouter([
   { path: '/profile', element: <ProfilePage />},
   { path: '/new-report', element: <NewReportPage />},
   { path: '/about', element: <AboutPage />},
-  //{ path: '/verification', element: <VerificationPage />},
-  //{ path: '/settings', element: <SettingsPage />}
 ]);
-
-// Function to check user login status
-// const checkUserLoginStatus = () => {
-//   // You can check localStorage, cookies, or some other method to verify the user's login status.
-//   const user = localStorage.getItem('user');
-//   return user ? true : false;
-// };
 
 
 function App() {
@@ -50,7 +40,6 @@ function App() {
     }
   }, []); // Run once when the component mounts
 
-  // version 1: בלי ההתנייה 
   return ( 
     <div>
       <RouterProvider router={router} />
@@ -58,78 +47,6 @@ function App() {
       <ReportsToVerifyUpdater />
     </div>
   );
-
 }
 
-
 export default App;
-
-
-  // return (
-  //   <div>
-  //     {/* Always show the router */}
-  //     <RouterProvider router={router} />
-  //     {console.log('Is Logged In:', isLoggedIn)}
-
-  //     {/* Conditionally render updaters only when the user is logged in */}
-  //     {isLoggedIn && (
-  //       <>
-  //         <LocationUpdater />
-  //         <ReportsToVerifyUpdater />
-  //       </>
-  //     )}
-  //   </div>
-  // );
-  
-  
-
-
-  // version 2: עם התנייה (לא עובד)
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // useEffect(() => {
-  //   // Check if the user is logged in when the component mounts
-  //   const loginStatus = checkUserLoginStatus();
-  //   setIsLoggedIn(loginStatus);
-  // }, []);
-
-  // return (
-  //   <div>
-  //     <RouterProvider router={router} />
-  //     {isLoggedIn && (
-  //       <>
-  //         <LocationUpdater />
-  //         <ReportsToVerifyUpdater />
-  //       </>
-  //     )}
-  //   </div>
-  // );
-  
-  
-
-
-
-
-
-
-
-// function App() {
-//   return (
-//     <>
-//       <h1>News Guard</h1>
-//     </>
-//   )
-// }
-
-// ******************************************************** //
-// way 2
-// const routeDefinitions = createRoutesFromElements(
-//   <Route>
-//     <Route path="/" element={<HomePage />} />
-//     <Route path="/products" element={<ProductsPage />} />
-//   </Route>
-// )
-
-// const router = createBrowserRouter(routeDefinitions);
-// ******************************************************** //
-

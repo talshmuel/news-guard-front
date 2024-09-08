@@ -8,7 +8,7 @@
   width: 100%;
   border-radius: 20px;
   padding: 40px;
-  background: linear-gradient(to bottom right, #ffffff, #e0e0e0); /* Subtle gradient */
+  background: linear-gradient(to bottom right, #ffffff, #e0e0e0); /* gradient */
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
@@ -43,8 +43,7 @@
   max-width: 750px;
   margin: 20px auto;
   padding: 20px 50px;
-  background: white; 
-  /* background: #f3e3e3; Nitzan- i changed the color */ 
+  background: white; /* background: #f3e3e3; Nitzan*/ 
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }

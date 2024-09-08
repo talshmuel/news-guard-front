@@ -1,11 +1,9 @@
 .login-container{ /* קוביה אמצעית */
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-family: Tahoma;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* height: 100vh; */
   height: 60%;
   padding: 20px;
   width: 100%;
@@ -15,22 +13,17 @@
   padding-bottom: 50px;
   padding-left: 50px;
   padding-right: 50px;
-  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
 .login-logo{
   width: 150px;
   height: 150px;
-  /*margin-top: 1px; 
-  margin-bottom: 1px;*/
   margin-bottom: 20px;
   transition: box-shadow 0.4s ease, background-color 0.4s ease;
 }
 .login-logo:hover{
-  /* background-color: #1e1b59; */
-  box-shadow: 0 0 30px 15px #2c2c61;
-  /* גורם ללוגו להיות זוהר מאחורה כשעוברים מעליו */
+  box-shadow: 0 0 30px 15px #2c2c61; /* גורם ללוגו להיות זוהר מאחורה כשעוברים מעליו */
 }
 
 .login-title{ /* הכותרת ניוז גארד */
@@ -46,7 +39,6 @@
   flex-direction: column; /* שיהיה בשורות */
   width: 100%; /* זה מה שעזר לשים במרכז !!!!!!!!!!!!! */
   max-width: 400px;
-  /*padding: 20px;  המרחק מהצדדים */
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -85,7 +77,6 @@
 }
 
 .login-input-box{ /* הקוביה שכותבים בה את האימייל וסיסמה */
-  /* margin: 10px 0; */
   margin: 15px 0;
   padding: 12px; /* גובה של הקוביה */
   font-size: 20px; /* גודל הפונט */
@@ -145,11 +136,3 @@
   margin-bottom: 10px;
   letter-spacing: 2px;
 }
-
-/* body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #131138; 
-  height: 100vh;
-}*/
-

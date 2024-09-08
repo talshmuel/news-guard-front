@@ -23,7 +23,6 @@ function Report({ report }) {
 
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
 
-  // State for likes and comments
   const [areCommentsVisible, setAreCommentsVisible] = useState(false);
   const [newComment, setNewComment] = useState('');
   const [comments, setComments] = useState(initialComments);
@@ -42,8 +41,7 @@ function Report({ report }) {
 
       if (response.ok) {
         const result = await response.text();
-        // Toggle the like (increment or decrement)
-        setLikesNumber((prevLikes) => prevLikes + (isLiked ? -1 : 1));
+        setLikesNumber((prevLikes) => prevLikes + (isLiked ? -1 : 1)); // Toggle the like (increment or decrement)
         setIsLiked(!isLiked); // Toggle the liked status
       }
     } catch (error) {
@@ -151,7 +149,6 @@ function Report({ report }) {
               <p className="report-reporter-details">
               {anonymousReport ? 'Anonymous' : reporterFullName} <i className="fa-solid fa-star"></i> {report.reporterReliabilityRate.toFixed(1)}
               </p>
-              {/* <strong>Reporter:</strong> {anonymousReport ? 'Anonymous' : reporterFullName} */}
           </div>
           <div className="report-reliability">
             <div className="report-reliability-stars">
@@ -162,15 +159,11 @@ function Report({ report }) {
 
       <div className="report-header-item">
         <span className="report-reliability-label"><strong>Report Reliability: </strong>{renderStars()} {(reliabilityRate!==-1 && reliabilityRate!==-2) ? reliabilityRate.toFixed(1) : ""}</span>
-        {/* <div className="report-reliability-stars">{renderStars()} {(reliabilityRate!==-1 && reliabilityRate!==-2) ? reliabilityRate : ""}</div> */}
       </div>
 
       <p className="report-time-details">{formatDateTime(timeReported)}</p>
     </div>
 
-
-      {/* {report.imageURL && <img src={report.imageURL} alt="Image" />} */}
-      {/* {report.imageURL && <img src={imageURL} alt="Image" />} */}
       <div>
         {imageURL ? (
           <img
@@ -188,18 +181,12 @@ function Report({ report }) {
       <p className="report-content">{text}</p>
 
       <div className="report-footer">
-
-        {/* Left side: Like button and number of likes */}
         <div className="report-left">
           <button className="report-like-button" onClick={handleLikeClick}>
-            {/* {isLiked ? 'Unlike' : 'Like'} */}
             <i className={isLiked ? 'fas fa-thumbs-down' : 'fas fa-thumbs-up'}></i>
           </button>
           <span className="report-like-label">{likesNumber}</span>
         </div>
-        
-
-
         <div className="report-right">
           <span className="report-comment-section"></span>
             <input
@@ -209,7 +196,6 @@ function Report({ report }) {
               placeholder="Add a comment"
             />
             <button className="report-comment-submit" onClick={handleCommentSubmit}>Submit</button>
-
           <button className="toggle-comments-button" onClick={toggleCommentsVisibility}>
             {areCommentsVisible ? `Hide Comments (${comments.length})` : `Show Comments (${comments.length})`}
           </button>
@@ -221,7 +207,6 @@ function Report({ report }) {
             <ul className="comment-list">
             {comments.map((comment, index) => (
               <li className="comment-item" key={index}>
-                {/* {comment.text} */}
                 {comment.commenterFullName}: {comment.text}
               </li>
             ))}
@@ -233,130 +218,3 @@ function Report({ report }) {
 }
 
 export default Report;
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/* Modal for comments */}
-        {/* {areCommentsVisible && (
-          <div className="comments-modal">
-            <div className="comments-modal-content">
-              <span className="close-comments-modal" onClick={toggleCommentsVisibility}>&times;</span>
-                <h2>Comments</h2>
-                  <ul className="comment-list">
-                    {comments.map((comment, index) => (
-                      <li className="comment-item" key={index}>
-                      {comment.text}
-                      </li>
-                    ))}
-                </ul>
-            </div>
-          </div>
-        )} */}
-
-
-          {/* <div className={`comments-container ${areCommentsVisible ? 'visible' : 'hidden'}`}>
-            {comments.map((comment, index) => (
-              <div className="comment-item" key={index}>
-                {comment.text}
-              </div>
-            ))}
-          </div>
-          </div> */}
-        
-
-
-        {/* Right side: Comments section */}
-        {/* <div className="report-comment-section">
-        <span className="report-comment-label">Comments: {comments.length}</span>
-        <input
-          type="text"
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          placeholder="Add a comment"
-          className="comment-input"
-        />
-        <button className="submit-comment-button" onClick={handleCommentSubmit}>Submit</button>
-
-        <button className="toggle-comments-button" onClick={toggleCommentsVisibility}>
-          {areCommentsVisible ? 'Hide Comments' : 'Show Comments'}
-        </button>
-
-        {areCommentsVisible && (
-          <div className="comments-window">
-            <ul className="comment-list">
-              {comments.map((comment, index) => (
-                <li key={index}>{comment.text}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div> */}
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // return (
-  //   <div className="report-container">
-  //     <div className="report-header">
-  //       <p><strong>Reporter: </strong> {isAnonymousReport ? 'Anonymous' : reporterFullName}</p>
-  //       <p><strong>Reliability: </strong> {reliabilityRate.toFixed(1)} ⭐</p>
-  //       <p><strong>Reported at: </strong> {new Date(timeReported).toLocaleString()}</p>
-  //     </div>
-  //     <div className="report-body">
-  //       <p>{text}</p>
-  //       {imageURL && <img src={imageURL} alt="Report Visual" />}
-  //     </div>
-  //     <div className="report-footer">
-  //       <p><strong>Likes: </strong> {IDOfUsersWhoLiked.length}</p>
-  //       <p><strong>  Comments: </strong> {comments.length}</p>
-  //       <p><strong>  Guardians: </strong> {guardsID.length}</p>
-  //     </div>
-  //   </div>
-  // );
-
-
-  
-/*
-      לייק זה פונקציית פוט
-      <PUT></PUT>
-      מקבלת:
-      report id - ועל איזה ריפורט
-      user id - מי עשה לייק
-      ////////////////////////////////////////////////////
-      comments:
-      JSON body 
-      commentsDTO
-
-      private final int reportID;
-      private final String text;
-      private final int writerUserID;
-      private final boolean isAGuardComment;
-      -present how many comments, and show the comments section.
-      -add button "comment"
-*/

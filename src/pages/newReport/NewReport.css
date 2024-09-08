@@ -1,13 +1,9 @@
 .new-report-container {
-  /*padding: 50px 50px 50px 50px;
-  top right bottom right*/
   padding: 50px;
-  /* margin: 0 auto; */
   max-width: 600px;
   background-color: #f0f0f5;
   border-radius: 10px;
   box-shadow: 0 0px 100px #000000;
-  
 }
 
 .new-report-headline{
@@ -15,21 +11,18 @@
   color: #333;
   margin-bottom: 20px;
   font-size: 50px;
-  
 }
 
 .new-report-text-container,
 .new-report-image-container,
 .new-report-anon-container {
   margin-bottom: 20px;
-    
 }
 
 .new-report-text-label, .new-report-image-label{
   display: block;
   font-size: 20px;
   color: #555;
-  
 }
 
 .new-report-text-input{
@@ -83,7 +76,6 @@
 /* Anonymous Report Option */
 .new-report-anon{
   margin-right: 8px;
-  
 }
 
 
@@ -96,9 +88,7 @@
 .new-report-submit-button {
   background-color: #007bff;
   color: #fff;
-
   margin-right: 100px;
-
   width: 100px;
   font-size: 18px;
   border: none;
@@ -113,7 +103,6 @@
 .new-report-cancel-button {
   background-color: #d73a25;
   color: #fff;
-
   width: 100px;
   font-size: 18px;
   border: none;
@@ -124,95 +113,3 @@
 .new-report-cancel-button:hover {
   background-color: #c32f1c;
 }
-
-
-
-
-
-/* .new-report-submit-button{
-  width: 100px;
-  padding: 12px;
-  font-size: 18px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-  
-.new-report-submit-button:hover {
-  background-color: #005cbe;
-}
-
-.new-report-cancel-button {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.new-report-cancel-button:hover {
-  background-color: #c82333;
-} */
-
-
-
-
-
-
-
-
-
-  
-
-/* .new-report-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-  }
-  
-  .new-report-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-bottom: 15px;
-  }
-  
-  input[type="text"], textarea, input[type="file"] {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-  }
-  
-  textarea {
-    height: 100px;
-  }
-  
-  .preview-image {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-  }
-  
-  button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-   */

@@ -5,19 +5,14 @@
     top: 50%; /* new */
     left: 50%; /* new */
     right: 50%; /* new */
-    /* bottom: 50px; */
     width: 500px; /* new Increase the width (was 300) */ 
     border: 1px solid #ccc;
     border-radius: 12px; /* new Rounded corners */
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Softer shadow */
-    /* padding: 16px; */
     padding: 20px;
     z-index: 1000;
     transform: translate(-50%, -50%); /* new */
-    /* background-color: violet; */
 }
-
 
 .present-report-top-header{
     padding-bottom: 30px;
@@ -30,25 +25,13 @@
     padding-bottom: 0px;
 }
 
-
 .present-report-header {
-    /* font-size: 10px; */
-    /* color: #333;
-    margin-top: 0px;
-    margin-bottom: 15px; */
     display: flex;
     justify-content: space-between; /* Spread items across the row */
     align-items: flex-start; /* Vertically align them */
     margin-bottom: 15px;
     font-size: 16px;
 }
-
-/* .present-report-details{
-    color: #555; 
-    margin-bottom: 8px;
-    font-size: 15px;
-    background-color: blue;
-} */
 
 .present-report-section{
     display: flex;
@@ -76,34 +59,7 @@
 .present-report-details-right, .present-report-value {
     font-size: 12px; /* Smaller for time */
     color: #999;
-  }
-
-/* 
-.present-report-details-left{
-    color: #555;
-    margin-bottom: 8px;
-    font-size: 15px;
-    flex: 1;
-    text-align: left;
-    color: #333;
 }
-
-.present-report-details-center{
-    margin-bottom: 8px;
-    font-size: 15px;
-    flex: 1;
-    text-align: center;
-    color: #555;
-}
-
-.present-report-details-right{
-    color: #555;
-    margin-bottom: 5px;
-    flex: 1;
-    text-align: right;
-    font-size: 12px;
-    color: #999;
-} */
 
 .present-report-img {
     max-width: 100%;
@@ -119,10 +75,8 @@
     max-width: 100%;
     height: auto;
     font-size: 25px;
-    /* margin-bottom: 10px; */
     margin-bottom: 30px;
     line-height: 1.4; /* Better text readability */
-
 }
 
 .present-report-buttons{
