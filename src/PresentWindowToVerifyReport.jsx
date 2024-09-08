@@ -54,8 +54,8 @@ function PresentWindowToVerifyReport({report, onClose}) {
   const sendVerificationRequest = async (reportId, verification) => {
     // console.log("sendVerificationRequest")
     try {
-      // console.log("entering try, verification: " + verification)
-      // console.log("reportID=" + reportId + " userID=" + userID + " verification=", verification)
+      console.log("entering try, verification: " + verification)
+      console.log("reportID=" + reportId + " userID=" + userID + " verification=", verification)
       const response = await fetch(`http://localhost:8080/verification/update-guard-verification?reportID=${reportId}&guardID=${userID}&verification=${verification}`,
         {
         method: 'PUT',

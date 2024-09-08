@@ -140,62 +140,8 @@ function Report({ report }) {
   };
 
 
-  {/* <div className="reporter-reliability"><strong> Reporter Reliability:</strong>  {reporterStars()}</div> */}
-  {/* <div className="report-reliability">Report Reliability: {renderStars()}</div> */}
-
-  // <div className="report-header">
-
-  //       <p className="report-reporter-details"><strong>Reporter: </strong> {anonymousReport ? 'Anonymous' : reporterFullName}</p>
-
-  //       <div className="report-reliability2">
-  //         <span className="report-reliability-label2">Reporter Reliability:</span>
-  //         <div className="report-reliability-stars2">{reporterStars()}</div>
-  //       </div>
-
-  //       <div className="report-reliability2">
-  //         <span className="report-reliability-label2">Report Reliability:</span>
-  //         <div className="report-reliability-stars2">{renderStars()}</div>
-  //       </div>
-
-  //       <p className="report-time-details">{formatDateTime(timeReported)}</p>
-  //     </div>
-
-
   return (
     <div className="report-container">
-      {/* <div className="report-header">
-
-        <p className="report-reporter-details"><strong>Reporter: </strong> {anonymousReport ? 'Anonymous' : reporterFullName}</p>
-
-        <div className="report-reliability2">
-          <span className="report-reliability-label2">Reporter Reliability:</span>
-          <div className="report-reliability-stars2">{reporterStars()}</div>
-        </div>
-
-        <div className="report-reliability2">
-          <span className="report-reliability-label2">Report Reliability:</span>
-          <div className="report-reliability-stars2">{renderStars()}</div>
-        </div>
-
-        <p className="report-time-details">{formatDateTime(timeReported)}</p>
-      </div> */}
-
-    {/* <div className="report-header">
-      <div className="report-header-item">
-        <p className="report-reporter-details">
-          <strong>Reporter:</strong> {anonymousReport ? 'Anonymous' : reporterFullName}
-        </p>
-        <div className="report-reliability">
-          <span className="report-reliability-label"><strong>Reliability: {reporterStars()}</strong></span>
-        </div>
-      </div>
-      <div className="report-header-item">
-        <span className="report-reliability-label"><strong>Report Reliability:</strong></span>
-        <div className="report-reliability-stars">{renderStars()}</div>
-      </div>
-
-      <p className="report-time-details">{formatDateTime(timeReported)}</p>
-    </div> */}
 
     <div className="report-header">
       <div className="report-header-item">
@@ -206,8 +152,6 @@ function Report({ report }) {
           </p>
           <div className="report-reliability">
             <div className="report-reliability-stars">
-              {/* <span className="star-icon"><i class="fa-solid fa-star"></i></span> */}
-              {/* <span className="reliability-number">{report.reporterReliabilityRate}</span> */}
             </div>
           </div>
         </div>
@@ -215,7 +159,7 @@ function Report({ report }) {
 
       <div className="report-header-item">
         <span className="report-reliability-label"><strong>Report Reliability:</strong></span>
-        <div className="report-reliability-stars">{renderStars()}</div>
+        <div className="report-reliability-stars">{renderStars()} {(reliabilityRate!==-1 && reliabilityRate!==-2) ? reliabilityRate : ""}</div>
       </div>
 
       <p className="report-time-details">{formatDateTime(timeReported)}</p>
