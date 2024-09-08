@@ -68,7 +68,8 @@
 }
 
 .report-reliability-label {
-  font-weight: bold; /* Make the label bold */
+  /* font-weight: bold;  */
+  align-items: center;
   margin-bottom: 5px; /* Space between label and stars */
   font-size: 17px;
 
