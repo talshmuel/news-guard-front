@@ -146,8 +146,10 @@ function Report({ report }) {
     <div className="report-header">
       <div className="report-header-item">
         <div className="report-reporter-info">
+          <p className="report-reporter-details"><strong>Reporter: </strong>
           <p className="report-reporter-details">
             {anonymousReport ? 'Anonymous' : reporterFullName} <i class="fa-solid fa-star"></i> {report.reporterReliabilityRate}
+            </p>
             {/* <strong>Reporter:</strong> {anonymousReport ? 'Anonymous' : reporterFullName} */}
           </p>
           <div className="report-reliability">
@@ -158,8 +160,8 @@ function Report({ report }) {
       </div>
 
       <div className="report-header-item">
-        <span className="report-reliability-label"><strong>Report Reliability:</strong></span>
-        <div className="report-reliability-stars">{renderStars()} {(reliabilityRate!==-1 && reliabilityRate!==-2) ? reliabilityRate : ""}</div>
+        <span className="report-reliability-label"><strong>Report Reliability: </strong>{renderStars()} {(reliabilityRate!==-1 && reliabilityRate!==-2) ? reliabilityRate : ""}</span>
+        {/* <div className="report-reliability-stars">{renderStars()} {(reliabilityRate!==-1 && reliabilityRate!==-2) ? reliabilityRate : ""}</div> */}
       </div>
 
       <p className="report-time-details">{formatDateTime(timeReported)}</p>
