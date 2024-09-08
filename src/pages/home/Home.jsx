@@ -15,7 +15,7 @@ function HomePage(){
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        const response = await fetch('http://localhost:8080/home-page/get-last-twenty-reports');
+        const response = await fetch('https://news-guard-c0fjanc7ethue7dn.eastus-01.azurewebsites.net/home-page/get-last-twenty-reports');
 
         if (response.ok)
         {

@@ -40,7 +40,7 @@ function SignupPage() {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:8080/report/upload-image', {
+      const response = await fetch('https://news-guard-c0fjanc7ethue7dn.eastus-01.azurewebsites.net/report/upload-image', {
         method: 'POST',
         body: formData,
       });
@@ -106,9 +106,8 @@ function SignupPage() {
     //console.log("Sending signupData:", signupData);
 
     try {
-      const response = await fetch('http://localhost:8080/register', {
+      const response = await fetch('https://news-guard-c0fjanc7ethue7dn.eastus-01.azurewebsites.net/register', {
         method: 'POST',
-        //mode: 'no-cors', /* נדב הוסיף את זההההההה */
         headers: {
           'Content-Type': 'application/json',
         },

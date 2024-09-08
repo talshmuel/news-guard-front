@@ -10,7 +10,7 @@ function PresentWindowToVerifyReport({report, onClose}) {
     try {
       console.log("entering try, verification: " + verification)
       console.log("reportID=" + reportId + " userID=" + userID + " verification=", verification)
-      const response = await fetch(`http://localhost:8080/verification/update-guard-verification?reportID=${reportId}&guardID=${userID}&verification=${verification}`,
+      const response = await fetch(`https://news-guard-c0fjanc7ethue7dn.eastus-01.azurewebsites.net/verification/update-guard-verification?reportID=${reportId}&guardID=${userID}&verification=${verification}`,
         {
         method: 'PUT',
         headers: {

@@ -13,7 +13,7 @@ const ReportsToVerifyUpdater = () => {
           const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
           let userID = userData ? userData.userId : 1;
           if(userID !== 1){
-          const response = await fetch(`http://localhost:8080/verification/get-reports-that-guard-need-to-verify?guardID=${userID}`);
+          const response = await fetch(`https://news-guard-c0fjanc7ethue7dn.eastus-01.azurewebsites.net/verification/get-reports-that-guard-need-to-verify?guardID=${userID}`);
 
           if (response.ok)
           {

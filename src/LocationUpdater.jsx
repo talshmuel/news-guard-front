@@ -17,7 +17,7 @@ const LocationUpdater = () => {
           longitude = 0;
         }
   
-        const response = await fetch('http://localhost:8080/location/save-location', {
+        const response = await fetch('https://news-guard-c0fjanc7ethue7dn.eastus-01.azurewebsites.net/location/save-location', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

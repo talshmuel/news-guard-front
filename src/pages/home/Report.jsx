@@ -35,7 +35,7 @@ function Report({ report }) {
 
   const handleLikeClick = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/report/like-or-unlike?reportID=${report.reportID}&userID=${userData.userId}`, {
+      const response = await fetch(`https://news-guard-c0fjanc7ethue7dn.eastus-01.azurewebsites.net/report/like-or-unlike?reportID=${report.reportID}&userID=${userData.userId}`, {
         method: 'PUT',
       });
 
@@ -52,7 +52,7 @@ function Report({ report }) {
   const handleCommentSubmit = async () => {
     if (!newComment.trim()) return; // Avoid empty comments
     try {
-        const response = await fetch('http://localhost:8080/report/add-comment', {
+        const response = await fetch('https://news-guard-c0fjanc7ethue7dn.eastus-01.azurewebsites.net/report/add-comment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -147,7 +147,7 @@ function Report({ report }) {
           <div className="report-reporter-details">
             <strong>Reporter: </strong>
               <p className="report-reporter-details">
-              {anonymousReport ? 'Anonymous' : reporterFullName} <i className="fa-solid fa-star"></i> {report.reporterReliabilityRate.toFixed(1)}
+              {anonymousReport ? 'Anonymous' : reporterFullName} <i className="fa-solid fa-star"></i> {report.reporterReliabilityRate}
               </p>
           </div>
           <div className="report-reliability">

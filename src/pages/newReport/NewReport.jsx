@@ -36,7 +36,7 @@ function NewReportPage(){
       formData.append('file', file);
   
       try {
-        const response = await fetch('http://localhost:8080/report/upload-image', {
+        const response = await fetch('https://news-guard-c0fjanc7ethue7dn.eastus-01.azurewebsites.net/report/upload-image', {
           method: 'POST',
           body: formData,
         });
@@ -99,7 +99,7 @@ function NewReportPage(){
     };
 
     try {
-      const response = await fetch('http://localhost:8080/report/add-new-report', {
+      const response = await fetch('https://news-guard-c0fjanc7ethue7dn.eastus-01.azurewebsites.net/report/add-new-report', {
         method: 'POST',
         headers:
         {
