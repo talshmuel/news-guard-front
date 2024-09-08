@@ -217,6 +217,7 @@
 
 /*margin:  מבחוץ */
 /*padding:  מבפנים */ 
+/* NITZAN GON CHANGE */
 .profile-reports-section{ /*זה החלק הפנימי של הריפורטים*/
   flex-direction: column;
   border-radius: 10px;
