@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 function AboutPage(){
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
-
+  //
   return(
     <div className="home-container">
       <NavigationBar userData={userData}  />
