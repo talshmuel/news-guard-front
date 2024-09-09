@@ -114,7 +114,7 @@ function SignupPage() {
         // body: formData,
         body: JSON.stringify(signupData),
       });
-
+console.log("check")
       if (response.ok) {
         //console.log("SIGN UP SUCCESSFULL!");
         navigate('/');
