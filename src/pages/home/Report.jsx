@@ -23,6 +23,7 @@ function Report({ report }) {
 
   const userData = JSON.parse(localStorage.getItem('userData')); // Retrieve the logged-in user's data
 
+  // State for likes and comments
   const [areCommentsVisible, setAreCommentsVisible] = useState(false);
   const [newComment, setNewComment] = useState('');
   const [comments, setComments] = useState(initialComments);
@@ -51,7 +52,7 @@ function Report({ report }) {
   
   const handleCommentSubmit = async () => {
     if (!newComment.trim()) return; // Avoid empty comments
-    try {
+    try {//check2
         const response = await fetch('https://news-guard-c0fjanc7ethue7dn.eastus-01.azurewebsites.net/report/add-comment', {
         method: 'POST',
         headers: {
@@ -146,9 +147,9 @@ function Report({ report }) {
         <div className="report-reporter-info">
           <div className="report-reporter-details">
             <strong>Reporter: </strong>
-              <p className="report-reporter-details">
+          <p className="report-reporter-details">
               {anonymousReport ? 'Anonymous' : reporterFullName} <i className="fa-solid fa-star"></i> {report.reporterReliabilityRate}
-              </p>
+          </p>
           </div>
           <div className="report-reliability">
             <div className="report-reliability-stars">
