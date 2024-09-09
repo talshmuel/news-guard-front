@@ -70,7 +70,7 @@ const LocationUpdater = () => {
     };
 
     sendLocation(); // Send location immediately when the component mounts
-    const intervalId = setInterval(updateLocation, 5000); // Send location every 5 seconds
+    const intervalId = setInterval(updateLocation, 25000); // Send location every 25 seconds
 
     return () => clearInterval(intervalId); // Clean up the interval on component unmount
   }, []);
