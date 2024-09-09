@@ -79,7 +79,7 @@ function createMemoryHistory(options) {
     createHref,
     createURL(to) {
       return new URL(createHref(to), "http://localhost");
-    },
+    },////
     encodeLocation(to) {
       let path = typeof to === "string" ? parsePath(to) : to;
       return {
